@@ -47,8 +47,12 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|gif)$/i,
-        use: ["file-loader?name=Assets/[name].[ext]"],
+        test: /\.(png|gif|jpe?g|svg|webp)$/i,
+        use: ["file-loader?name=Assets/[name].[ext]","image-webpack-loader"],
+      },
+      {
+        test: /\.(woff|ttf)$/i,
+        use:["file-loader?name=Assets/[name].[ext]"]
       }
     ],
   },

@@ -1,6 +1,40 @@
 @font-face {
-    font-family: 'Quicksand';
-    src: url('../Extras/fonts/static/Quicksand-Light.ttf') format('truetype');
-    font-style: normal;
-    font-weight: normal;
-  }
+  font-family: 'Quicksand';
+  src: url('../Extras/fonts/Quicksand_Book.otf');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../Extras/fonts/Quicksand_Bold.otf');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../Extras/fonts/Quicksand_Light.otf');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../Extras/fonts/Quicksand_Dash.otf');
+  font-style: normal;
+  font-weight: 200;
+}
+
+:root{
+  --theme-color-stratos: #001B48;
+  --theme-color-regal-blue: #02457A;
+  --theme-color-bondi-blue: #018ABE;
+  --theme-color-morning-glory: #97cADB;
+  --theme-color-boticelli: #D6E8EE;
+}
+
+.fuente1 {
+  font-family: 'Quicksand';
+  font-weight: 100;
+}
