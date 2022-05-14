@@ -34,7 +34,18 @@
   --theme-color-boticelli: #D6E8EE;
 }
 
-.fuente1 {
-  font-family: 'Quicksand';
-  font-weight: 100;
+.titulos{
+  font-family:'Quicksand';
+  font-weight: 700;
+}
+h1{
+  font-size: 2vw;
+}
+
+.gradiente{
+  background: linear-gradient(to bottom,
+  var(--theme-color-regal-blue),
+  var(--theme-color-bondi-blue),
+  var(--theme-color-morning-glory)
+  );
 }
