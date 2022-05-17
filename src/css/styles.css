@@ -34,6 +34,43 @@
   --theme-color-boticelli: #D6E8EE;
 }
 
+body{
+  font-family: 'Quicksand';
+  font-weight: 400;
+  font-size: 90%;
+}
+
+h1{
+  font-size: calc(0.75rem + 0.85vw);
+}
+
+@media screen and (min-width:480px) {
+  h1{
+    font-size:  calc(0.95rem + 1.3vw);
+  }
+}
+
+@media screen and (min-width:800px) {
+	body {
+		font-size:100%;
+		/* ampliamos los textos si mide más de 800px */
+	}
+  h1{
+    font-size:  calc(1.375rem + 1.5vw);
+  }
+}
+
+/* fin de la zona para más de 800px de ancho de pantalla */
+@media screen and (min-width:1200px) {
+	body {
+		font-size:120%;
+		/* ampliamos más aún los textos si mide más de 1200px */
+	}
+  h1{
+    font-size: 2.5rem;
+  }
+}
+
 .titulos{
   font-family:'Quicksand';
   font-weight: 700;
