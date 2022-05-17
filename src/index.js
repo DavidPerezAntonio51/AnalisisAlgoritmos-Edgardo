@@ -1,9 +1,34 @@
-import 'bootstrap';
-import './css/styles.css'
-//editar a gusto para formar animacion
-var stage = new createjs.Stage("demoCanvas");
-var circle = new createjs.Shape();
-circle.graphics.beginFill("red").drawCircle(0, 0, 40);
-circle.x = circle.y = 100;
-stage.addChild(circle);
-stage.update();
+function setup() {
+  createCanvas(1000, 500);
+  background(0,0,0);
+}
+
+function draw() {
+  background(1000);
+  translate(-250, 0, 0);
+
+  push();
+  rotateZ(1.57);
+  rotateX(0);
+  rotateY(0);
+  ambientMaterial(0);
+  cylinder(30, 200);
+  pop();
+  translate(250, 0, 0);
+  push();
+  rotateZ(1.57);
+  rotateX(0);
+  rotateY(0);
+  ambientMaterial(0);
+  cylinder(30, 200);
+  pop();
+  translate(250, 0, 0);
+  push();
+  rotateZ(1.57);
+  rotateX(0);
+  rotateY(0);
+  ambientMaterial(0);
+  cylinder(30, 200);
+  pop();
+  
+}

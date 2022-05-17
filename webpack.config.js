@@ -6,6 +6,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: 'index.js',
+    path: __dirname + '/build',
     /*La linea de abajo ayuda en el modo de desarrollo a redireccionar todo a index.js desde webpack
     Solo usar en fase de desarrollo al crear el build retirar la linea o comentarla*/
     //publicPath: '/'
