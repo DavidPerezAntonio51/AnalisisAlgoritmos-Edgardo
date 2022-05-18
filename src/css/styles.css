@@ -1,27 +1,27 @@
 @font-face {
   font-family: 'Quicksand';
-  src: url('../Extras/fonts/Quicksand_Book.otf');
+  src: url('../Extras/fonts/Quicksand_Book.woff') format('woff');
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('../Extras/fonts/Quicksand_Bold.otf');
+  src: url('../Extras/fonts/Quicksand_Bold.woff') format('woff');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('../Extras/fonts/Quicksand_Light.otf');
+  src: url('../Extras/fonts/Quicksand_Light.woff') format('woff');
   font-style: normal;
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('../Extras/fonts/Quicksand_Dash.otf');
+  src: url('../Extras/fonts/Quicksand_Dash.woff') format('woff');
   font-style: normal;
   font-weight: 200;
 }
