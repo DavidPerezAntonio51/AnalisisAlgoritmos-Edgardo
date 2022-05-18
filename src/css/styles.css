@@ -37,11 +37,11 @@
 body{
   font-family: 'Quicksand';
   font-weight: 400;
-  font-size: 90%;
+  font-size: 80%;
 }
 
 h1{
-  font-size: calc(0.75rem + 0.85vw);
+  font-size: calc(0.65rem + 0.8vw);
 }
 
 @media screen and (min-width:480px) {
