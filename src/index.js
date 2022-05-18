@@ -1,34 +1,36 @@
-function setup() {
-  createCanvas(1000, 500);
-  background(0,0,0);
-}
+import * as p5 from 'p5';
+const canvas = (sk) => {
+  sk.setup = () => {
+    sk.createCanvas(1000, 500, sk.WEBGL);
+    sk.background(0, 0, 0);
+  }
+  sk.draw = () => {
+    sk.background(1000);
+    sk.translate(-250, 0, 0);
 
-function draw() {
-  background(1000);
-  translate(-250, 0, 0);
-
-  push();
-  rotateZ(1.57);
-  rotateX(0);
-  rotateY(0);
-  ambientMaterial(0);
-  cylinder(30, 200);
-  pop();
-  translate(250, 0, 0);
-  push();
-  rotateZ(1.57);
-  rotateX(0);
-  rotateY(0);
-  ambientMaterial(0);
-  cylinder(30, 200);
-  pop();
-  translate(250, 0, 0);
-  push();
-  rotateZ(1.57);
-  rotateX(0);
-  rotateY(0);
-  ambientMaterial(0);
-  cylinder(30, 200);
-  pop();
-  
+    sk.push();
+    sk.rotateZ(1.57);
+    sk.rotateX(0);
+    sk.rotateY(0);
+    sk.ambientMaterial(0);
+    sk.cylinder(30, 200);
+    sk.pop();
+    sk.translate(250, 0, 0);
+    sk.push();
+    sk.rotateZ(1.57);
+    sk.rotateX(0);
+    sk.rotateY(0);
+    sk.ambientMaterial(0);
+    sk.cylinder(30, 200);
+    sk.pop();
+    sk.translate(250, 0, 0);
+    sk.push();
+    sk.rotateZ(1.57);
+    sk.rotateX(0);
+    sk.rotateY(0);
+    sk.ambientMaterial(0);
+    sk.cylinder(30, 200);
+    sk.pop();
+  }
 }
+const P5 = new p5(canvas);
