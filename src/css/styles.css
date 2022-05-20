@@ -76,6 +76,24 @@ h1{
   font-weight: 700;
 }
 
+.franja{
+  background: var(--theme-color-stratos)
+}
+
+.text-boticelli{
+  color: var(--theme-color-boticelli);
+  border-color: var(--theme-color-boticelli);
+}
+
+.btn-outline-bondi{
+  color: var(--theme-color-bondi-blue);
+  border-color: var(--theme-color-bondi-blue);
+}
+
+.btn-outline-bondi:hover{
+  background-color: var(--theme-color-bondi-blue);
+}
+
 .gradiente{
   background: linear-gradient(to bottom,
   var(--theme-color-regal-blue),
