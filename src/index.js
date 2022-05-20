@@ -3,6 +3,7 @@ import './css/styles.css'
 import Ipn_Logo from './Assets/LOGO_POLI.png'
 import Escom_Logo from './Assets/LOGO_ESCOM.png';
 import Home from './Componentes/Home';
+import Sim from './Componentes/sim';
 
 /* Valores Constantes del DOM*/
 const bodyApp = document.getElementById("app");
@@ -14,12 +15,17 @@ logoIpn.classList.add("img-fluid");
 logoEscom.classList.add("img-fluid");
 document.getElementById("logo-escom").appendChild(logoEscom);
 document.getElementById("logo-ipn").appendChild(logoIpn);
+const inicio = document.createElement('div');
+const sim = document.createElement('div');
 /*Variables en el DOM*/
 const changeToSim = () => {
-    bodyApp.remove();
+    bodyApp.removeChild(inicio);
+    bodyApp.appendChild(sim);
 }
 const changeToHome = () => {
+    bodyApp.removeChild(sim);
     bodyApp.appendChild(inicio);
 }
-const inicio = Home(changeToSim)
+Sim(sim, changeToHome);
+Home(inicio, changeToSim)
 bodyApp.appendChild(inicio);
