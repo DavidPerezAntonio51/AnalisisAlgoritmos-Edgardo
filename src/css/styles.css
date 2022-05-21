@@ -90,8 +90,21 @@ h1{
   border-color: var(--theme-color-bondi-blue);
 }
 
+.btn-bondi{
+  color: var(--theme-color-boticelli);
+  border-color: var(--theme-color-bondi-blue);
+  background-color: var(--theme-color-bondi-blue);
+}
+
+.btn-bondi:hover{
+  background-color: var(--theme-color-regal-blue);
+  border-color: var(--theme-color-regal-blue);
+  color: var(--theme-color-boticelli);
+}
+
 .btn-outline-bondi:hover{
   background-color: var(--theme-color-bondi-blue);
+  color: var(--theme-color-boticelli);
 }
 
 .gradiente{
