@@ -102,6 +102,10 @@ h1{
   color: var(--theme-color-boticelli);
 }
 
+.table-morning-glory{
+  background-color: var(--theme-color-morning-glory)
+}
+
 .btn-outline-bondi:hover{
   background-color: var(--theme-color-bondi-blue);
   color: var(--theme-color-boticelli);

@@ -2,7 +2,7 @@ import crearFraja from "./Franja";
 
 function Sim(contenedor, changeToHome) {
     /*Declaracion de elementos */
-    const botonSim = document.createElement('button');
+    const botonHome = document.createElement('button');
     const botonStart = document.createElement('button');
     const fila1 = document.createElement('div');
     const col11 = document.createElement('div');
@@ -18,7 +18,7 @@ function Sim(contenedor, changeToHome) {
     const comparacion = document.createElement('div');
     /*Clases de bootstrap */
     selector.classList.add("form-select", "form-select-lg", "my-2");
-    botonSim.classList.add("btn", "btn-bondi");
+    botonHome.classList.add("btn", "btn-bondi");
     botonStart.classList.add("btn", "btn-outline-bondi");
     fila1.classList.add("row", "align-items-center");
     col11.classList.add("col-auto");
@@ -28,13 +28,14 @@ function Sim(contenedor, changeToHome) {
     col21.classList.add("col");
     col22.classList.add("col");
     /*Extras*/
-    selector.id = "sizeOfRod"; 
+    selector.id = "sizeOfRod";
     botonStart.textContent = "Iniciar Animación";
+    botonStart.disabled = true;
     bruta.id = "bruta";
     optima.id = "optima";
     comparacion.id = "comparacion";
-    botonSim.textContent = "Regresar";
-    botonSim.onclick = changeToHome;
+    botonHome.textContent = "Regresar";
+    botonHome.onclick = changeToHome;
     mountRow2(fila2, col21, col22, botonStart);
     optionsMount(selector);
     const handlerChangeSelector = (event) => {
@@ -47,7 +48,7 @@ function Sim(contenedor, changeToHome) {
         }
     }
     selector.onchange = handlerChangeSelector;
-    franjaItems(fila1, col11, col12, col13, botonSim, selector);
+    franjaItems(fila1, col11, col12, col13, botonHome, selector);
     fila3.appendChild(bruta);
     contenedor.appendChild(fila1);
     contenedor.appendChild(fila2);
@@ -62,6 +63,7 @@ function mountSelectSizes(selector) {
     const defaultOP = document.createElement('option');
     defaultOP.selected = true;
     defaultOP.text = "Tamños Disponibles";
+    defaultOP.value = 0;
     op1.value = 4;
     op2.value = 5;
     op3.value = 6;
@@ -74,23 +76,81 @@ function mountSelectSizes(selector) {
     selector.appendChild(op3);
 }
 
+function crearFilaTamaños(size) {
+    const filaTamaños = [];
+    const thTamaño = document.createElement('th');
+    thTamaño.textContent = "Tamaño";
+    filaTamaños.push(thTamaño);
+    for(let i = 1; i<=size; i++){
+        var tdTamaño = document.createElement('td');
+        tdTamaño.textContent = i;
+        filaTamaños.push(tdTamaño);
+    }
+    return filaTamaños;
+}
+function crearFilaPrecios(size) {
+    const filaPrecios = [];
+    const thPrecio = document.createElement('th');
+    thPrecio.textContent = "Tamaño";
+    filaPrecios.push(thPrecio);
+    for(let i = 1; i<=size; i++){
+        var tdPrecio = document.createElement('td');
+        var entrada = document.createElement('input');
+        entrada.id = "price-"+i;
+        entrada.type = "number";
+        entrada.max = 50;
+        entrada.min = 1;
+        tdPrecio.appendChild(entrada);
+        filaPrecios.push(tdPrecio);
+    }
+    return filaPrecios;
+}
+
 function mountRow2(fila2, col1, col2, botonStart) {
     const filaAux = document.createElement('div');
     const col1Aux = document.createElement('div');
     const col2Aux = document.createElement('div');
     const selectorLabel = document.createElement('h5');
     const selector = document.createElement('select');
+    const tablaPrecios = document.createElement('table');
+    const theadPrecios = document.createElement('thead');
+    const tbodyPrecios = document.createElement('tbody');
+    const trTamaño = document.createElement('tr');
+    const trPrecio = document.createElement('tr');
+    const thPrecio = document.createElement('th');
+    const thTamaño = document.createElement('th');
+    const handlerChangeSize = (event) => {
+        if (event.target.value > 0) {
+            console.log(event.target.value);
+            trTamaño.replaceChildren(...crearFilaTamaños(event.target.value));
+            trPrecio.replaceChildren(...crearFilaPrecios(event.target.value));
+            botonStart.disabled = false;
+        }
+    }
+    tablaPrecios.classList.add("table");
+    trTamaño.classList.add("table-morning-glory");
     selector.classList.add('form-select');
     col1Aux.classList.add('col');
     col2Aux.classList.add('col');
     filaAux.classList.add("row");
+    selector.onchange = handlerChangeSize;
     selectorLabel.textContent = "Elige el Tamaño de Varilla:";
+    selector.id = "tamñoElegido";
+    thPrecio.textContent = "Precio";
+    thTamaño.textContent = "Tamaño";
     col1Aux.appendChild(selectorLabel);
     col1Aux.appendChild(selector);
     col2Aux.appendChild(botonStart);
     filaAux.appendChild(col1Aux);
     filaAux.appendChild(col2Aux);
+    trPrecio.appendChild(thPrecio);
+    trTamaño.appendChild(thTamaño);
+    theadPrecios.appendChild(trTamaño);
+    tbodyPrecios.appendChild(trPrecio);
+    tablaPrecios.appendChild(theadPrecios);
+    tablaPrecios.appendChild(tbodyPrecios);
     col1.appendChild(filaAux);
+    col2.appendChild(tablaPrecios);
     fila2.appendChild(col1);
     fila2.appendChild(col2);
     mountSelectSizes(selector);
