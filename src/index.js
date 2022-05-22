@@ -1,20 +1,25 @@
 
 
-import * as p5 from 'p5';
-var Arr = [2,80,120]; 
+//import * as p5 from 'p5';
+//var Arr = [2,80,120]; 
 
 class RodCutting2
 {
     static cutRod(price, n)
     {
+        var max_val = Number.MIN_VALUE;
         var val = Array(n + 1).fill(0);
         val[0] = 0;
-        for (i; i <= n; i++)
+        var valor = 0;
+        for (let i=1; i <= n; i++)
         {
-            var max_val = -Number.MAX_VALUE;
-            for (j; j < i; j++)
+            var max_val = Number.MIN_VALUE;
+            for (let j=0; j < i; j++)
             {
-                max_val = Math.max(max_val,price[j] + val[i - j - 1]);
+                valor = price[j] + val[i - j - 1];
+                if(valor > max_val){
+                  max_val=valor;
+                }
             }
             val[i] = max_val;
         }
@@ -24,7 +29,7 @@ class RodCutting2
     {
         var arr = [1, 5, 8, 9, 10, 17, 17, 20];
         var size = arr.length;
-        console.log("Maximo valor obtenido " + com.bean.algorithm.basic.RodCutting2.cutRod(arr, size));
+        console.log("Maximo valor obtenido " + RodCutting2.cutRod(arr, size));
     }
 }
 RodCutting2.main([]);
