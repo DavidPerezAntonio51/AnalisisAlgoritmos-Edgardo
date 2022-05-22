@@ -25,8 +25,8 @@ function Sim(contenedor, changeToHome) {
     col12.classList.add("col-auto");
     col13.classList.add("col-3", "d-flex", "justify-content-end");
     fila2.classList.add("row", "align-items-center", "py-3");
-    col21.classList.add("col");
-    col22.classList.add("col");
+    col21.classList.add("col", "py-2");
+    col22.classList.add("col", "py-2");
     /*Extras*/
     selector.id = "sizeOfRod";
     botonStart.textContent = "Iniciar Animación";
@@ -91,7 +91,7 @@ function crearFilaTamaños(size) {
 function crearFilaPrecios(size) {
     const filaPrecios = [];
     const thPrecio = document.createElement('th');
-    thPrecio.textContent = "Tamaño";
+    thPrecio.textContent = "Precio";
     filaPrecios.push(thPrecio);
     for(let i = 1; i<=size; i++){
         var tdPrecio = document.createElement('td');
@@ -113,6 +113,7 @@ function mountRow2(fila2, col1, col2, botonStart) {
     const selectorLabel = document.createElement('h5');
     const selector = document.createElement('select');
     const tablaPrecios = document.createElement('table');
+    const resposiveTable = document.createElement('div');
     const theadPrecios = document.createElement('thead');
     const tbodyPrecios = document.createElement('tbody');
     const trTamaño = document.createElement('tr');
@@ -133,6 +134,7 @@ function mountRow2(fila2, col1, col2, botonStart) {
     col1Aux.classList.add('col');
     col2Aux.classList.add('col');
     filaAux.classList.add("row");
+    resposiveTable.classList.add('table-responsive');
     selector.onchange = handlerChangeSize;
     selectorLabel.textContent = "Elige el Tamaño de Varilla:";
     selector.id = "tamñoElegido";
@@ -149,8 +151,9 @@ function mountRow2(fila2, col1, col2, botonStart) {
     tbodyPrecios.appendChild(trPrecio);
     tablaPrecios.appendChild(theadPrecios);
     tablaPrecios.appendChild(tbodyPrecios);
+    resposiveTable.appendChild(tablaPrecios);
     col1.appendChild(filaAux);
-    col2.appendChild(tablaPrecios);
+    col2.appendChild(resposiveTable);
     fila2.appendChild(col1);
     fila2.appendChild(col2);
     mountSelectSizes(selector);
