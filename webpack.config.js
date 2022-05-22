@@ -52,8 +52,8 @@ module.exports = {
         use: ["file-loader?name=Assets/[name].[ext]","image-webpack-loader"],
       },
       {
-        test: /\.(woff|ttf)$/i,
-        use:["file-loader?name=Assets/[name].[ext]"]
+        test: /\.(woff|ttf|otf)$/i,
+        use:["file-loader?name=Fonts/[name].[ext]"]
       }
     ],
   },

@@ -1,27 +1,27 @@
 @font-face {
   font-family: 'Quicksand';
-  src: url('../Extras/fonts/Quicksand_Book.otf');
+  src: url('../Extras/fonts/Quicksand_Book.woff') format('woff');
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('../Extras/fonts/Quicksand_Bold.otf');
+  src: url('../Extras/fonts/Quicksand_Bold.woff') format('woff');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('../Extras/fonts/Quicksand_Light.otf');
+  src: url('../Extras/fonts/Quicksand_Light.woff') format('woff');
   font-style: normal;
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('../Extras/fonts/Quicksand_Dash.otf');
+  src: url('../Extras/fonts/Quicksand_Dash.woff') format('woff');
   font-style: normal;
   font-weight: 200;
 }
@@ -34,7 +34,87 @@
   --theme-color-boticelli: #D6E8EE;
 }
 
-.fuente1 {
+body{
   font-family: 'Quicksand';
-  font-weight: 100;
+  font-weight: 400;
+  font-size: 80%;
+}
+
+h1{
+  font-size: calc(0.65rem + 0.8vw);
+}
+
+@media screen and (min-width:480px) {
+  h1{
+    font-size:  calc(0.95rem + 1.3vw);
+  }
+}
+
+@media screen and (min-width:800px) {
+	body {
+		font-size:100%;
+		/* ampliamos los textos si mide más de 800px */
+	}
+  h1{
+    font-size:  calc(1.375rem + 1.5vw);
+  }
+}
+
+/* fin de la zona para más de 800px de ancho de pantalla */
+@media screen and (min-width:1200px) {
+	body {
+		font-size:120%;
+		/* ampliamos más aún los textos si mide más de 1200px */
+	}
+  h1{
+    font-size: 2.5rem;
+  }
+}
+
+.titulos{
+  font-family:'Quicksand';
+  font-weight: 700;
+}
+
+.franja{
+  background: var(--theme-color-stratos)
+}
+
+.text-boticelli{
+  color: var(--theme-color-boticelli);
+  border-color: var(--theme-color-boticelli);
+}
+
+.btn-outline-bondi{
+  color: var(--theme-color-bondi-blue);
+  border-color: var(--theme-color-bondi-blue);
+}
+
+.btn-bondi{
+  color: var(--theme-color-boticelli);
+  border-color: var(--theme-color-bondi-blue);
+  background-color: var(--theme-color-bondi-blue);
+}
+
+.btn-bondi:hover{
+  background-color: var(--theme-color-regal-blue);
+  border-color: var(--theme-color-regal-blue);
+  color: var(--theme-color-boticelli);
+}
+
+.table-morning-glory{
+  background-color: var(--theme-color-morning-glory)
+}
+
+.btn-outline-bondi:hover{
+  background-color: var(--theme-color-bondi-blue);
+  color: var(--theme-color-boticelli);
+}
+
+.gradiente{
+  background: linear-gradient(to bottom,
+  var(--theme-color-regal-blue),
+  var(--theme-color-bondi-blue),
+  var(--theme-color-morning-glory)
+  );
 }
