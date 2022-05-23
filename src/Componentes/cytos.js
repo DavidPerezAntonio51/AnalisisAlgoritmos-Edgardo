@@ -30,7 +30,7 @@ function crearAnimacion(tamaño, precios) {
     });
     let options = {
         name: 'grid',
-        
+
         fit: true,
         rows: 1,
 
