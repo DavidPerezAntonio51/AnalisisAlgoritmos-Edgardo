@@ -1,8 +1,6 @@
 import 'bootstrap';
-import cytoscape from 'cytoscape';
 import crearFraja from './Franja';
-class brutaCorte {
-    constructor(nodo) {
+function brutaCorte(nodo) {
         const fila = document.createElement('div');
         fila.classList.add("row");
         const col1 = document.createElement('div');
@@ -17,43 +15,6 @@ class brutaCorte {
         canvas.id = "canvas";
         col1.appendChild(canvas);
     }
-    crearAnimacion(tamaño, precios) {
-        var cy = cytoscape({
-            container: document.getElementById("canvas"),
-            elements: {
-                nodes: [
-                    {
-                        data: { id: 'a' }
-                    },
-
-                    {
-                        data: { id: 'b' }
-                    }
-                ],
-                edges: [
-                    {
-                        data: { id: 'ab', source: 'a', target: 'b' }
-                    }
-                ]
-            },
-
-            layout: {
-                name: 'grid',
-                rows: 1
-            },
-
-            // so we can see the ids
-            style: [
-                {
-                    selector: 'node',
-                    style: {
-                        'label': 'data(id)'
-                    }
-                }
-            ],
-            headless: true,
-        });
-    }
-}
+    
 
 export default brutaCorte;
