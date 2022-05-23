@@ -1,3 +1,4 @@
+import brutaCorte from "./bruta";
 import crearFraja from "./Franja";
 
 function Sim(contenedor, changeToHome) {
@@ -28,9 +29,14 @@ function Sim(contenedor, changeToHome) {
     col21.classList.add("col", "py-2");
     col22.classList.add("col", "py-2");
     /*Extras*/
+    var br = new brutaCorte(bruta);
+    const handlerStartAnim = () => {
+        br.crearAnimacion(2,3);
+    }
     selector.id = "sizeOfRod";
     botonStart.textContent = "Iniciar Animación";
     botonStart.disabled = true;
+    botonStart.onclick = handlerStartAnim;
     bruta.id = "bruta";
     optima.id = "optima";
     comparacion.id = "comparacion";
