@@ -11,7 +11,7 @@ function brutaCorte(nodo) {
         fila.appendChild(col2);
         nodo.appendChild(fila);
         const canvas = document.createElement('div');
-        col1.appendChild(crearFraja("Solucion por fuerza bruta"));
+        col1.appendChild(crearFraja("Solución por Fuerza Bruta"));
         canvas.id = "canvas";
         col1.appendChild(canvas);
     }
