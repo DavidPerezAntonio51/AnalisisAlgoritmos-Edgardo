@@ -29,10 +29,13 @@ function crearAnimacion(tamaño, precios) {
         ],
     });
     let options = {
-        name: 'null',
+        name: 'grid',
+        
+        fit: true,
+        rows: 1,
 
-        ready: function () { }, // on layoutready
-        stop: function () { } // on layoutstop
+        //ready: function () { }, // on layoutready
+        //stop: function () { } // on layoutstop
     };
 
     cy.layout(options).run();

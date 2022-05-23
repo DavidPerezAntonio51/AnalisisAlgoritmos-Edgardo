@@ -76,6 +76,12 @@ h1{
   font-weight: 700;
 }
 
+#canvas{
+  height: 500px;
+  width: auto;
+  overflow: hidden;
+}
+
 .franja{
   background: var(--theme-color-stratos)
 }
