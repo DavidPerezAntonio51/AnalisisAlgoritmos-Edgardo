@@ -9,6 +9,7 @@ import Sim from './Componentes/sim';
 const bodyApp = document.getElementById("app");
 const logoIpn = document.createElement('img');
 const logoEscom = document.createElement('img');
+logoIpn.style.width = "70%";
 logoIpn.src = Ipn_Logo;
 logoEscom.src = Escom_Logo;
 logoIpn.classList.add("img-fluid");
