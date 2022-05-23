@@ -35,7 +35,7 @@ function Sim(contenedor, changeToHome) {
         crearAnimacion(2,5);
     }
     selector.id = "sizeOfRod";
-    botonStart.textContent = "Iniciar Animación";
+    botonStart.textContent = "Iniciar animación";
     botonStart.disabled = true;
     botonStart.onclick = handlerStartAnim;
     bruta.id = "bruta";
@@ -69,7 +69,7 @@ function mountSelectSizes(selector) {
     const op3 = document.createElement('option');
     const defaultOP = document.createElement('option');
     defaultOP.selected = true;
-    defaultOP.text = "Tamños Disponibles";
+    defaultOP.text = "Tamaños disponibles";
     defaultOP.value = 0;
     op1.value = 4;
     op2.value = 5;
@@ -143,7 +143,7 @@ function mountRow2(fila2, col1, col2, botonStart) {
     filaAux.classList.add("row");
     resposiveTable.classList.add('table-responsive');
     selector.onchange = handlerChangeSize;
-    selectorLabel.textContent = "Elige el Tamaño de Varilla:";
+    selectorLabel.textContent = "Elige el tamaño de varilla:";
     selector.id = "tamñoElegido";
     thPrecio.textContent = "Precio";
     thTamaño.textContent = "Tamaño";
