@@ -76,6 +76,12 @@ h1{
   font-weight: 700;
 }
 
+.centerDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #canvas{
   height: 500px;
   width: auto;
