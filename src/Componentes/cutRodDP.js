@@ -17,3 +17,13 @@ function cutRod(price, n) {
     }
     return val[n];
 }
+
+function main(args)
+{
+    var arr =
+        [1, 5, 8, 9, 10, 17, 17, 20];
+    var size = arr.length;
+    console.log("Maximum Obtainable Value is " + cutRod(arr, size));
+}
+
+//RodCutting2.main([]);

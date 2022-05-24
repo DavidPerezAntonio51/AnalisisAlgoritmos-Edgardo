@@ -6,8 +6,6 @@ int main(int argc, char const *argv[])
 {
     int n = 0;
 
-
-
     return 0;
 }
 
@@ -23,14 +21,14 @@ int rcp(int precios[], int longitud)
 
     valores[0] = 0;
 
-    for(i = 1; i <= longitud; i++)
+    for (i = 1; i <= longitud; i++)
     {
         valorMaximo = INT_MIN;
-        for(j = 0; j < i; j++)
+        for (j = 0; j < i; j++)
         {
             valor = precios[j] + valores[i - j - 1];
 
-            if(valor > valorMaximo)
+            if (valor > valorMaximo)
                 valorMaximo = valor;
         }
 
