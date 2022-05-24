@@ -20,12 +20,12 @@ const inicio = document.createElement('div');
 const sim = document.createElement('div');
 /*Variables en el DOM*/
 const changeToSim = () => {
-    bodyApp.removeChild(inicio);
-    bodyApp.appendChild(sim);
+  bodyApp.removeChild(inicio);
+  bodyApp.appendChild(sim);
 }
 const changeToHome = () => {
-    bodyApp.removeChild(sim);
-    bodyApp.appendChild(inicio);
+  bodyApp.removeChild(sim);
+  bodyApp.appendChild(inicio);
 }
 Sim(sim, changeToHome);
 Home(inicio, changeToSim)

@@ -32,7 +32,7 @@ function Sim(contenedor, changeToHome) {
     /*Extras*/
     brutaCorte(bruta);
     const handlerStartAnim = () => {
-        crearAnimacion(2,5);
+        crearAnimacion(2, 5);
     }
     selector.id = "sizeOfRod";
     botonStart.textContent = "Iniciar animación";
@@ -88,7 +88,7 @@ function crearFilaTamaños(size) {
     const thTamaño = document.createElement('th');
     thTamaño.textContent = "Tamaño";
     filaTamaños.push(thTamaño);
-    for(let i = 1; i<=size; i++){
+    for (let i = 1; i <= size; i++) {
         var tdTamaño = document.createElement('td');
         tdTamaño.textContent = i;
         filaTamaños.push(tdTamaño);
@@ -100,10 +100,10 @@ function crearFilaPrecios(size) {
     const thPrecio = document.createElement('th');
     thPrecio.textContent = "Precio";
     filaPrecios.push(thPrecio);
-    for(let i = 1; i<=size; i++){
+    for (let i = 1; i <= size; i++) {
         var tdPrecio = document.createElement('td');
         var entrada = document.createElement('input');
-        entrada.id = "price-"+i;
+        entrada.id = "price-" + i;
         entrada.type = "number";
         entrada.max = 50;
         entrada.min = 1;

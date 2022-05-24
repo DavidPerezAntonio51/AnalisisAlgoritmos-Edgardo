@@ -1,7 +1,7 @@
 import 'bootstrap';
 import '../css/styles.css';
 import crearFraja from './Franja';
-function Home(contenedor,changeToSim) {
+function Home(contenedor, changeToSim) {
     const fila1 = document.createElement('div');
     const fila2 = document.createElement('div');
     const fila3 = document.createElement('div');
@@ -11,12 +11,12 @@ function Home(contenedor,changeToSim) {
     const parrafo1 = document.createElement('p');
     const botonSim = document.createElement('button');
     botonSim.textContent = "Revisa Nuestro Simulador";
-    botonSim.classList.add("btn","btn-outline-bondi");
+    botonSim.classList.add("btn", "btn-outline-bondi");
     botonSim.onclick = changeToSim;
     parrafo1.textContent = "Prueba";
     contenedor.classList.add("container-fluid");
-    fila1.classList.add("row","justify-content-center","align-content-center");
-    fila2.classList.add("row","justify-content-center","align-content-center");
+    fila1.classList.add("row", "justify-content-center", "align-content-center");
+    fila2.classList.add("row", "justify-content-center", "align-content-center");
     col1.classList.add("col");
     col2.classList.add("col");
     col3.classList.add("col");
@@ -31,7 +31,7 @@ function Home(contenedor,changeToSim) {
     contenedor.appendChild(fila1);
     contenedor.appendChild(fila2);
     contenedor.appendChild(fila3);
-    contenedor.id="home";
+    contenedor.id = "home";
 
     return contenedor;
 }
