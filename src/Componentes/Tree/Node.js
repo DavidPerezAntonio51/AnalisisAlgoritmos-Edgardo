@@ -22,14 +22,15 @@ Node.prototype.visit = function (parent) {
         this.left.visit(this);
     }
     console.log(this.value);
+    stroke('#001B48');
+    line(parent.x, parent.y, this.x, this.y);
+    fill('#02457A');
+    ellipse(this.x, this.y, 50, 50);
     fill(255);
-    noStroke();
+    //noStroke();
     textAlign(CENTER);
     text(this.value, this.x, this.y);
-    stroke(255);
-    noFill();
-    ellipse(this.x, this.y, 20, 20);
-    line(parent.x, parent.y, this.x, this.y);
+    fill(255);
     if (this.right != null) {
         this.right.visit(this);
     }
@@ -39,16 +40,16 @@ Node.prototype.addNode = function (n) {
     if (n.value < this.value) {
         if (this.left == null) {
             this.left = n;
-            this.left.x = this.x - 50;
-            this.left.y = this.y + 20;
+            this.left.x = this.x - 100;
+            this.left.y = this.y + 50;
         } else {
             this.left.addNode(n);
         }
     } else if (n.value > this.value) {
         if (this.right == null) {
             this.right = n;
-            this.right.x = this.x + 50;
-            this.right.y = this.y + 20;
+            this.right.x = this.x + 100;
+            this.right.y = this.y + 50;
         } else {
             this.right.addNode(n);
         }

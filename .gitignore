@@ -9,7 +9,7 @@
 .png
 
 #folders
-/.vscode
+/Codes/.vscode
 
 # testing
 /coverage

@@ -32,7 +32,9 @@ function Sim(contenedor, changeToHome) {
     /*Extras*/
     //brutaCorte(bruta);
     const handlerStartAnim = () => {
-        brutaCorte(bruta);
+        let precios = getValues();
+        //console.log(precios.length + precios);
+        brutaCorte(bruta, precios, precios.length);
         //crearAnimacion(2, 5);
     }
     selector.id = "sizeOfRod";
@@ -195,5 +197,19 @@ function franjaItems(fila1, col11, col12, col13, buttonBack, selector) {
     fila1.appendChild(col11);
     fila1.appendChild(col12);
     fila1.appendChild(col13);
+}
+
+function getValues(){
+    let len = document.getElementById('tamñoElegido').value;
+    let precios = [];
+
+    let idSinNum = 'price-';
+
+    for (let i = 0; i < len; i++){
+        let id = idSinNum + (i + 1);
+        //console.log(id);
+        precios.push(document.getElementById(id).value);
+    }
+    return precios;
 }
 export default Sim;
