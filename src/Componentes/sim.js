@@ -30,9 +30,10 @@ function Sim(contenedor, changeToHome) {
     col21.classList.add("col", "py-2");
     col22.classList.add("col", "py-2");
     /*Extras*/
-    brutaCorte(bruta);
+    //brutaCorte(bruta);
     const handlerStartAnim = () => {
-        crearAnimacion(2, 5);
+        brutaCorte(bruta);
+        //crearAnimacion(2, 5);
     }
     selector.id = "sizeOfRod";
     botonStart.textContent = "Iniciar animación";
@@ -95,6 +96,7 @@ function crearFilaTamaños(size) {
     }
     return filaTamaños;
 }
+
 function crearFilaPrecios(size) {
     const filaPrecios = [];
     const thPrecio = document.createElement('th');
@@ -166,7 +168,6 @@ function mountRow2(fila2, col1, col2, botonStart) {
     mountSelectSizes(selector);
 }
 
-
 function optionsMount(selector) {
     const defaultOP = document.createElement('option');
     const op1 = document.createElement('option');
@@ -177,7 +178,7 @@ function optionsMount(selector) {
     op1.value = "bruta";
     op1.text = "Solo Fuerza Bruta";
     op2.value = "optima";
-    op2.text = "Solo Opcion Optmia";
+    op2.text = "Solo Opcion Optima";
     op3.value = "vs";
     op3.text = "Comparación Bruta vs Optima";
     selector.appendChild(defaultOP);

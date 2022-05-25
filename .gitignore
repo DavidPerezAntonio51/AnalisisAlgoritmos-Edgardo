@@ -8,6 +8,9 @@
 #files
 .png
 
+#folders
+/.vscode
+
 # testing
 /coverage
 

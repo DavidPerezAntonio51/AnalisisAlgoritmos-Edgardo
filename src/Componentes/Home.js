@@ -10,7 +10,7 @@ function Home(contenedor, changeToSim) {
     const col3 = document.createElement('div');
     const parrafo1 = document.createElement('p');
     const botonSim = document.createElement('button');
-    botonSim.textContent = "Revisa Nuestro Simulador";
+    botonSim.textContent = "Revisa nuestro simulador";
     botonSim.classList.add("btn", "btn-outline-bondi");
     botonSim.onclick = changeToSim;
     parrafo1.textContent = "Prueba";
