@@ -24,7 +24,7 @@ function setup(nodo, costs, len) {
     background(255);
     arbol = new Tree();
     for (let i = 0; i < len; i++){
-        precios.push(costs[i]);
+        precios.push(parseInt(costs[i], 10));
     }
     longitud = len;
     corteR(precios, longitud);

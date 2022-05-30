@@ -6,6 +6,7 @@ function Node(val, x, y) {
     this.y = y;
 }
 
+/*
 Node.prototype.search = function (val) {
     if (this.value == val) {
         return this;
@@ -15,7 +16,7 @@ Node.prototype.search = function (val) {
         return this.right.search(val);
     }
     return null;
-};
+};*/
 
 Node.prototype.visit = function (parent) {
     if (this.left != null) {
