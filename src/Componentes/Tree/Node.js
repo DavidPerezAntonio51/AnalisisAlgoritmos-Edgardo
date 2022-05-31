@@ -1,7 +1,7 @@
 function Node(val, x, y) {
     this.value = val;
-    this.left = null;
-    this.right = null;
+    this.child = [];
+    this.parent;
     this.x = x;
     this.y = y;
 }
@@ -19,10 +19,15 @@ Node.prototype.search = function (val) {
 };*/
 
 Node.prototype.visit = function (parent) {
-    if (this.left != null) {
-        this.left.visit(this);
+    if (this.child.length != 0) {
+        console.log(this.child.length);
+        for (let i = 0; i < this.child.length; i++) {
+            console.log("nodo: "+ this.child.length+" hijo: "+i);
+            this.child[i].visit(this);
+        }
     }
-    console.log(this.value);
+    //console.log(this.value);
+    console.log(this.x, this.y);
     stroke('#001B48');
     line(parent.x, parent.y, this.x, this.y);
     fill('#02457A');
@@ -32,29 +37,27 @@ Node.prototype.visit = function (parent) {
     textAlign(CENTER);
     text(this.value, this.x, this.y);
     fill(255);
-    if (this.right != null) {
-        this.right.visit(this);
-    }
 };
 
 Node.prototype.addNode = function (n) {
-    if (n.value < this.value) {
-        if (this.left == null) {
-            this.left = n;
-            this.left.x = this.x - 100;
-            this.left.y = this.y + 50;
-        } else {
-            this.left.addNode(n);
-        }
-    } else if (n.value > this.value) {
-        if (this.right == null) {
-            this.right = n;
-            this.right.x = this.x + 100;
-            this.right.y = this.y + 50;
-        } else {
-            this.right.addNode(n);
-        }
+
+    if (this.child.length == 0) {
+        //Lo coloca a la izquierda
+        n.x = this.x - 100;
+        n.y = this.y + 50;
+    } else {
+        //Lo coloca a la derecha
+        n.x = this.x + 25;
+        n.y = this.y + 50;
     }
+    this.child.push(n);
+
+    /*//dibuja a la izquierda
+    this.left.x = this.x - 100;
+    this.left.y = this.y + 50;
+    //Dibuja el nodo a la derecha
+    this.right.x = this.x + 100;
+    this.right.y = this.y + 50;*/
 };
 
 export default Node;

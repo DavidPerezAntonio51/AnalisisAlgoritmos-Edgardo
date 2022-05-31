@@ -13,15 +13,16 @@ Tree.prototype.search = function (val) {
     return found;
 };
 
-Tree.prototype.addValue = function (val) {
+Tree.prototype.addValue = function (val, padre) {
     var n = new Node(val);
-    if (this.root == null) {
+    if (padre == null) {
         this.root = n;
         this.root.x = width / 2;
         this.root.y = 46;
     } else {
-        this.root.addNode(n);
+        padre.addNode(n);
     }
+    return n;
 };
 
 export default Tree;

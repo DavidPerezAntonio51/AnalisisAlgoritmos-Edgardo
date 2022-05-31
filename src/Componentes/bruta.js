@@ -27,13 +27,16 @@ function setup(nodo, costs, len) {
         precios.push(parseInt(costs[i], 10));
     }
     longitud = len;
-    corteR(precios, longitud);
+
+    let padre = null;
+    corteR(precios, longitud, padre);
 
     console.log(arbol);
     arbol.traverse();
 }
 
-function corteR(precios, longitud) {
+function corteR(precios, longitud, padre) {
+    padre = arbol.addValue(longitud, padre);
     var valmax = Number.MIN_VALUE;
     var valor = 0;
     if (longitud <= 0) {
@@ -41,13 +44,12 @@ function corteR(precios, longitud) {
     }
 
     for (let i = 0; i < longitud; i++) {
-        valor = precios[i] + corteR(precios, longitud - i - 1);
-        console.log(valmax);
-        arbol.addValue(valor);
-
+        valor = precios[i] + corteR(precios, longitud - i - 1, padre);
+        //console.log(valor);
         if (valor > valmax) {
             valmax = valor;
         }
+
     }
 
     return valmax;
