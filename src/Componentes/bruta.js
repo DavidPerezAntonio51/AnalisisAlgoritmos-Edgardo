@@ -10,16 +10,6 @@ let longitud;
 var arbol;
 
 function setup(nodo, costs, len) {
-    const fila = document.createElement('div');
-    fila.classList.add("row");
-    const col1 = document.createElement('div');
-    col1.classList.add("col");
-    const col2 = document.createElement('div');
-    col2.classList.add("col");
-    fila.appendChild(col1);
-    fila.appendChild(col2);
-    nodo.appendChild(fila);
-    col1.appendChild(crearFraja("Solución por Fuerza Bruta"));
     createCanvas(975, 15000);
     background(255);
     arbol = new Tree();
@@ -55,7 +45,7 @@ function corteR(precios, longitud, padre) {
     return valmax;
 }
 
-/*
+
 function brutaCorte(nodo) {
     const fila = document.createElement('div');
     fila.classList.add("row");
@@ -70,7 +60,10 @@ function brutaCorte(nodo) {
     col1.appendChild(crearFraja("Solución por Fuerza Bruta"));
     //canvas.id = "canvas";
     //col1.appendChild(canvas);
-}*/
+}
 
-
-export default setup;
+const bruta = {
+    setup,
+    brutaCorte
+}
+export default bruta;

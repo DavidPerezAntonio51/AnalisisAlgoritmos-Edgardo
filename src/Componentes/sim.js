@@ -1,4 +1,4 @@
-import brutaCorte from "./bruta";
+import brutaModule from "./bruta";
 import crearAnimacion from "./cytos";
 import crearFraja from "./Franja";
 
@@ -30,11 +30,11 @@ function Sim(contenedor, changeToHome) {
     col21.classList.add("col", "py-2");
     col22.classList.add("col", "py-2");
     /*Extras*/
-    //brutaCorte(bruta);
+    brutaModule.brutaCorte(bruta);
     const handlerStartAnim = () => {
         let precios = getValues();
         //console.log(precios.length + precios);
-        brutaCorte(bruta, precios, precios.length);
+        brutaModule.setup(bruta, precios, precios.length);
         //crearAnimacion(2, 5);
     }
     selector.id = "sizeOfRod";
