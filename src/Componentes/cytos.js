@@ -21,7 +21,7 @@ function crearAnimacion(tprecios, longitud) {
   );
   valsMax.sort(function(a, b){return a[0]-b[0]});
   for (let i = 1; i < pila.length; i++) {
-    edges.push({ data: { source: pila[i].parent.id.toString(), target: pila[i].id.toString(), valmax: valsMax[i][1]} });
+    edges.push({ data: { source: pila[i].parent.id.toString(), target: pila[i].id.toString(), valmax: "↑ "+valsMax[i][1].toString()} });
   }
   nodes[0].data.value = valsMax[0][1].toString() + " "+pila[0].value.toString();
   console.log(edges);
