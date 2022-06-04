@@ -1,7 +1,7 @@
-function Node(val, x, y) {
+function Node(val, x, y, parent) {
     this.value = val;
     this.child = [];
-    this.parent;
+    this.parent = parent;
     this.x = x;
     this.y = y;
 }

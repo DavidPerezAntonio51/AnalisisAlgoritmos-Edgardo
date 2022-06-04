@@ -16,10 +16,12 @@ Tree.prototype.search = function (val) {
 Tree.prototype.addValue = function (val, padre) {
     var n = new Node(val);
     if (padre == null) {
+        n.parent = null;
         this.root = n;
         this.root.x = width / 2;
         this.root.y = 46;
     } else {
+        n.parent = padre;
         padre.addNode(n);
     }
     return n;

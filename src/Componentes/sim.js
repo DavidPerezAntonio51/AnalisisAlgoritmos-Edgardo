@@ -34,7 +34,7 @@ function Sim(contenedor, changeToHome) {
     const handlerStartAnim = () => {
         let precios = getValues();
         //console.log(precios.length + precios);
-        brutaModule.setup(bruta, precios, precios.length);
+        crearAnimacion(precios, precios.length);
         //crearAnimacion(2, 5);
     }
     selector.id = "sizeOfRod";

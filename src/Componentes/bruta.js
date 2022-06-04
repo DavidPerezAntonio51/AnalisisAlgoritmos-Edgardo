@@ -9,7 +9,7 @@ let precios = [];
 let longitud;
 var arbol;
 
-function setup(nodo, costs, len) {
+function setup( costs, len) {
     createCanvas(975, 15000);
     background(255);
     arbol = new Tree();
@@ -58,8 +58,8 @@ function brutaCorte(nodo) {
     nodo.appendChild(fila);
     const canvas = document.createElement('div');
     col1.appendChild(crearFraja("Solución por Fuerza Bruta"));
-    //canvas.id = "canvas";
-    //col1.appendChild(canvas);
+    canvas.id = "canvas";
+    col1.appendChild(canvas);
 }
 
 const bruta = {
