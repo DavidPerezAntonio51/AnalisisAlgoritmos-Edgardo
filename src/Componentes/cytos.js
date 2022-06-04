@@ -6,125 +6,87 @@ import dagre from 'cytoscape-dagre';
 
 var arbol;
 var pila = [];
+var valsMax = [];
 
 function crearAnimacion(tprecios, longitud) {
-    var selector = document.getElementById('tamñoElegido').value;
-    //var valor = selector.getAttributeNode();
-    console.log(selector);
-    arbol = new Tree();
-    /*
-    const canvas = (sk) => {
-        container: document.getElementById("canvas")
-        sk.setup = () => {
-            //container: document.getElementById("canvas");
-          sk.createCanvas(700,400 , sk.WEBGL);
-        }
-        sk.draw = () => {
-          sk.background(1000);
-          sk.translate(0, -150, 0);
+  var selector = document.getElementById('tamñoElegido').value;
+  //var valor = selector.getAttributeNode();
+  console.log(selector);
+  arbol = new Tree();
+  corteR(tprecios, longitud, null);
+  let nodes = [];
+  let edges = [];
+  pila.forEach(nodo =>
+    nodes.push({ data: { id: nodo.id.toString(), value: nodo.value.toString() } })
+  );
+  valsMax.sort(function(a, b){return a[0]-b[0]});
+  for (let i = 1; i < pila.length; i++) {
+    edges.push({ data: { source: pila[i].parent.id.toString(), target: pila[i].id.toString(), valmax: valsMax[i][1]} });
+  }
+  nodes[0].data.value = valsMax[0][1].toString() + " "+pila[0].value.toString();
+  console.log(edges);
+  console.log(valsMax);
+  cytoscape.use(dagre);
+  var cy = cytoscape({
+    container: document.getElementById("canvas"),
+    boxSelectionEnabled: false,
+    autounselectify: true,
 
-          sk.push();
-          sk.rotateZ(1.57);
-          sk.rotateX(0);
-          sk.rotateY(0);
-          sk.ambientMaterial(0);
-          sk.cylinder(10, 100);
-          sk.pop();
-          sk.translate(250, 0, 0);
-          sk.push();
-          sk.rotateZ(1.57);
-          sk.rotateX(0);
-          sk.rotateY(0);
-          sk.ambientMaterial(0);
-          sk.cylinder(10, 100);
-          sk.pop();
-          sk.translate(250, 0, 0);
-          sk.push();
-          sk.rotateZ(1.57);
-          sk.rotateX(0);
-          sk.rotateY(0);
-          sk.ambientMaterial(0);
-          sk.cylinder(10, 100);
-          sk.pop();
+    layout: {
+      name: "dagre"
+    },
+
+    style: [
+      {
+        selector: "node",
+        style: {
+          content: "data(value)",
+          "text-opacity": 0.5,
+          "text-valign": "center",
+          "text-halign": "right",
+          "background-color": "#11479e"
+        }
+      },
+
+      {
+        selector: "edge",
+        style: {
+          content: "data(valmax)",
+          "curve-style": "bezier",
+          width: 4,
+          "target-arrow-shape": "triangle",
+          "line-color": "#9dbaea",
+          "target-arrow-color": "#9dbaea"
         }
       }
-      const P5 = new p5(canvas);
-      */
-    corteR(tprecios, longitud, 0, cy, null);
-    console.log(pila);
-    let nodes = [];
-    let edges = [];
-    pila.forEach(nodo => 
-      nodes.push({data: { id: nodo.id.toString()}})
-    );
-    for (let i = 1; i < pila.length; i++) {
-      edges.push({data:{source:pila[i].parent.id.toString(), target: pila[i].id.toString()}});  
+    ],
+
+    elements: {
+      nodes,
+      edges
     }
-    console.log(nodes);
-    console.log(edges);
-    cytoscape.use(dagre);
-    var cy = cytoscape({
-        container: document.getElementById("canvas"),
-        boxSelectionEnabled: false,
-        autounselectify: true,
-
-        layout: {
-            name: "dagre"
-        },
-
-        style: [
-            {
-                selector: "node",
-                style: {
-                    content: "data(id)",
-                    "text-opacity": 0.5,
-                    "text-valign": "center",
-                    "text-halign": "right",
-                    "background-color": "#11479e"
-                }
-            },
-
-            {
-                selector: "edge",
-                style: {
-                    "curve-style": "bezier",
-                    width: 4,
-                    "target-arrow-shape": "triangle",
-                    "line-color": "#9dbaea",
-                    "target-arrow-color": "#9dbaea"
-                }
-            }
-        ],
-
-        elements: {
-            nodes,
-            edges
-        }
-    });
+  });
 
 }
-function corteR(precios, longitud, nivel, cy,  padre) {
-    padre = arbol.addValue(longitud, padre);
-    pila.push(padre);
-    var valmax = Number.MIN_VALUE;
-    var valor = 0;
-    if (longitud <= 0) {
-        return 0;
+function corteR(precios, longitud, padre) {
+  padre = arbol.addValue(longitud, padre);
+  pila.push(padre);
+  var valmax = Number.MIN_VALUE;
+  var valor = 0;
+  if (longitud <= 0) {
+    valsMax.push([padre.id, 0]);
+    return 0;
+  }
+  for (let i = 0; i < longitud; i++) {
+    valor = parseInt(precios[i])
+    var aux = corteR(precios, longitud - i - 1, padre);
+    valor = valor + aux;
+    if (valor > valmax) {
+      valmax = valor;
     }
-    nivel++;
-    //console.log(precios)
-    for (let i = 0; i < longitud; i++) {
-        valor = parseInt(precios[i])
-        var aux = corteR(precios, longitud - i - 1, nivel, cy,  padre);
-        valor = valor + aux;
-        console.log(valor, precios[i], aux, "nivel: " + nivel);
-        if (valor > valmax) {
-            valmax = valor;
-        }
-
-    }
-
-    return valmax;
+  }
+  valsMax.push([padre.id, valmax]);
+  return valmax;
 }
 
 export default crearAnimacion;
