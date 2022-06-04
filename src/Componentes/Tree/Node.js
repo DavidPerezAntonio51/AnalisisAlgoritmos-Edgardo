@@ -1,9 +1,10 @@
-function Node(val, x, y, parent) {
+function Node(val, x, y, parent, id) {
     this.value = val;
     this.child = [];
     this.parent = parent;
     this.x = x;
     this.y = y;
+    this.id = id;
 }
 
 /*

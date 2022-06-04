@@ -50,6 +50,18 @@ function crearAnimacion(tprecios, longitud) {
       }
       const P5 = new p5(canvas);
       */
+    corteR(tprecios, longitud, 0, cy, null);
+    console.log(pila);
+    let nodes = [];
+    let edges = [];
+    pila.forEach(nodo => 
+      nodes.push({data: { id: nodo.id.toString()}})
+    );
+    for (let i = 1; i < pila.length; i++) {
+      edges.push({data:{source:pila[i].parent.id.toString(), target: pila[i].id.toString()}});  
+    }
+    console.log(nodes);
+    console.log(edges);
     cytoscape.use(dagre);
     var cy = cytoscape({
         container: document.getElementById("canvas"),
@@ -85,17 +97,10 @@ function crearAnimacion(tprecios, longitud) {
         ],
 
         elements: {
-            nodes: [
-                { data: { id: "n0" } },
-
-            ],
-            edges: [
-            ]
+            nodes,
+            edges
         }
     });
-
-    corteR(tprecios, longitud, 0, cy, null);
-    console.log(pila);
 
 }
 function corteR(precios, longitud, nivel, cy,  padre) {
