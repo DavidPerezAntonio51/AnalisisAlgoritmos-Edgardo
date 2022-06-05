@@ -1,6 +1,4 @@
-import Sim from './sim';
 import cytoscape from 'cytoscape';
-import * as p5 from 'p5';
 import Tree from './Tree/Tree';
 import dagre from 'cytoscape-dagre';
 

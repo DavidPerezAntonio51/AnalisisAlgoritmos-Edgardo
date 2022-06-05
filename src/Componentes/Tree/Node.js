@@ -1,10 +1,8 @@
-function Node(val, valMax, x, y, parent, id) {
+function Node(val, valMax, parent, id) {
     this.value = val;
     this.valMax = valMax;
     this.child = [];
     this.parent = parent;
-    this.x = x;
-    this.y = y;
     this.id = id;
 }
 
