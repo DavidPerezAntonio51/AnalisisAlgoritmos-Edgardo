@@ -1,3 +1,6 @@
+import Zdog from 'zdog';
+import zfont from 'zfont';
+
 var arr = [1, 5, 8, 9, 10, 17, 17, 20];
 var size = arr.length;
 function cutRod(price, n) {
@@ -18,12 +21,35 @@ function cutRod(price, n) {
     return val[n];
 }
 
-function main(args)
+function main()
 {
-    var arr =
-        [1, 5, 8, 9, 10, 17, 17, 20];
-    var size = arr.length;
-    console.log("Maximum Obtainable Value is " + cutRod(arr, size));
+    const {
+        Illustration, Ellipse, Rect, Shape, Group, Anchor,
+      } = Zdog;
+      
+      // set up the illustration within the existing canvas element
+      const illustration = new Illustration({
+        element: 'canvas',
+        dragRotate: true,
+      });
+      
+      // below the star draw a circle with a fill and no stroke, for the shadow
+      
+      for (let i = 0; i<4;i++){
+        console.log("hola");
+        const shadow = new Rect({
+          addTo: illustration,
+          width: 120,
+          height: 80,
+          stroke: 20,
+          //fill: true,
+          color: 'hsla(45, 100%, 58%, 0.4)',
+          translate: { x: 50+120*i, y: 100 },
+        });
+      }
+      
+      
+      illustration.updateRenderGraph();
 }
 
-//RodCutting2.main([]);
+export default main;

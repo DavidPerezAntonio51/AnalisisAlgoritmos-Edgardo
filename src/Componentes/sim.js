@@ -1,6 +1,8 @@
 import brutaModule from "./bruta";
 import crearAnimacion from "./cytos";
 import crearFraja from "./Franja";
+import optimaModule from "./optima";
+import main from "./cutRodDP";
 
 function Sim(contenedor, changeToHome) {
     /*Declaracion de elementos */
@@ -30,17 +32,9 @@ function Sim(contenedor, changeToHome) {
     col21.classList.add("col", "py-2");
     col22.classList.add("col", "py-2");
     /*Extras*/
-    brutaModule.brutaCorte(bruta);
-    const handlerStartAnim = () => {
-        let precios = getValues();
-        //console.log(precios.length + precios);
-        crearAnimacion(precios, precios.length);
-        //crearAnimacion(2, 5);
-    }
     selector.id = "sizeOfRod";
     botonStart.textContent = "Iniciar animación";
     botonStart.disabled = true;
-    botonStart.onclick = handlerStartAnim;
     bruta.id = "bruta";
     optima.id = "optima";
     comparacion.id = "comparacion";
@@ -50,11 +44,23 @@ function Sim(contenedor, changeToHome) {
     optionsMount(selector);
     const handlerChangeSelector = (event) => {
         if (event.target.value === "bruta") {
-            fila3.replaceChildren(bruta);
+            //fila3.replaceChildren(bruta);
+            brutaModule.brutaCorte(bruta);
+            const handlerStartAnim = () => {
+                let precios = getValues();
+                crearAnimacion(precios, precios.length);
+            }
+            botonStart.onclick = handlerStartAnim;
         } else if (event.target.value === "vs") {
             fila3.replaceChildren(comparacion);
         } else if (event.target.value === "optima") {
             fila3.replaceChildren(optima);
+            optimaModule.optimaCanvas(optima);
+            const handlerStartAnim = () => {
+                let precios = getValues();
+                main();
+            }
+            botonStart.onclick = handlerStartAnim;
         }
     }
     selector.onchange = handlerChangeSelector;

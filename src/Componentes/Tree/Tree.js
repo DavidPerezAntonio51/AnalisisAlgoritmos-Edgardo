@@ -9,8 +9,8 @@ Tree.prototype.traverse = function () {
     this.root.visit(this.root);
 };
 
-Tree.prototype.search = function (val) {
-    var found = this.root.search(val);
+Tree.prototype.search = function (id) {
+    var found = this.root.search(id);
     return found;
 };
 

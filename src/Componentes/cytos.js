@@ -7,13 +7,11 @@ import anime from 'animejs';
 var arbol;
 var pila = [];
 var valsMax = [];
-var animateGraphBuilding;
-var nodes;
 
 function crearAnimacion(tprecios, longitud) {
   var selector = document.getElementById('tamñoElegido').value;
   //var valor = selector.getAttributeNode();
-  console.log(selector);
+  ////console.log(selector);
   arbol = new Tree();
   corteR(tprecios, longitud, null);
   let nodes = [];
@@ -28,8 +26,8 @@ function crearAnimacion(tprecios, longitud) {
   nodes[0].data.value = valsMax[0][1].toString() + " " + pila[0].value.toString();
   nodes[0].position.x = 890;
   nodes[0].position.y = 490;
-  //console.log(edges);
-  //console.log(valsMax);
+  ////console.log(edges);
+  ////console.log(valsMax);
   cytoscape.use(dagre);
   var cy = cytoscape({
     container: document.getElementById("canvas"),
@@ -48,7 +46,7 @@ function crearAnimacion(tprecios, longitud) {
           "text-opacity": 0.5,
           "text-valign": "center",
           "text-halign": "right",
-          "background-color": "#11479e"
+          "background-color": "#02457A"
         }
       },
 
@@ -59,8 +57,8 @@ function crearAnimacion(tprecios, longitud) {
           "curve-style": "bezier",
           width: 4,
           "target-arrow-shape": "triangle",
-          "line-color": "#9dbaea",
-          "target-arrow-color": "#9dbaea"
+          "line-color": "#97cADB",
+          "target-arrow-color": "#97cADB"
         }
       }
     ],
@@ -71,6 +69,7 @@ function crearAnimacion(tprecios, longitud) {
     }
   });
 
+  //console.log(cy.nodes()[9].connectedEdges()[0].source().id());
   animacionArbol(cy);
 
 }
@@ -107,15 +106,33 @@ function animacionArbol(cy) {
   var edges = cy.edges();
   var posFinal = [];
   var posInicial = [];
+  
 
-  nodes.slice(1).forEach(nodo => {
-    posFinal.push({x: nodo.position().x, y: nodo.position().y});
-    nodo.position({ x: nodes[0].position('x'), y: nodes[0].position('y') });
-    nodo.style({
+  for (let i = 1; i < nodes.length; i++) {
+    posFinal.push({x: nodes[i].position().x, y: nodes[i].position().y});
+    nodes[i].style({
       'opacity': 0,
     });
-    posInicial.push(nodo.position());
-  });
+  }
+  for (let i = 1; i < nodes.length; i++){
+    //console.log(posFinal[parseInt(nodes[i].connectedEdges()[0].source().id(), 10)]);
+    if (parseInt(nodes[i].connectedEdges()[0].source().id(), 10) == 0){
+      nodes[i].position({ 
+        x: nodes[0].position('x'),
+        y: nodes[0].position('y') 
+      });
+    }
+    nodes[i].position({ 
+      x: posFinal[parseInt(nodes[i].connectedEdges()[0].source().id(), 10)].x,
+      y: posFinal[parseInt(nodes[i].connectedEdges()[0].source().id(), 10)].y 
+    });
+    //console.log(nodes[i].position());
+    posInicial.push({
+      x: nodes[i].position('x'),
+      y: nodes[i].position('y')
+    });
+  }
+  //console.log(posFinal, posInicial);
 
   edges.forEach(edge => {
     edge.style({
@@ -123,7 +140,7 @@ function animacionArbol(cy) {
     })
   })
 
-  console.log(posFinal.length);
+  ////console.log(posFinal.length);
 
   var animation = anime.timeline({
     targets: posInicial[0],
@@ -136,8 +153,6 @@ function animacionArbol(cy) {
       nodes[0].position(anim.animatables[0].target);
     }*/
   });
-
-  //console.log(posFinal, pos);
   
   for (let i = 1; i < nodes.length; i++) {
     animation.add({

@@ -1,47 +1,10 @@
 import 'bootstrap';
 import crearFraja from './Franja';
-import Tree from './Tree/Tree';
-
-let precios = [];
-let longitud;
-var arbol;
 
 function setup( costs, len) {
     createCanvas(975, 15000);
     background(255);
-    arbol = new Tree();
-    for (let i = 0; i < len; i++){
-        precios.push(parseInt(costs[i], 10));
-    }
-    longitud = len;
-
-    let padre = null;
-    corteR(precios, longitud, padre);
-
-    console.log(arbol);
-    arbol.traverse();
 }
-
-function corteR(precios, longitud, padre) {
-    padre = arbol.addValue(longitud, padre);
-    var valmax = Number.MIN_VALUE;
-    var valor = 0;
-    if (longitud <= 0) {
-        return 0;
-    }
-
-    for (let i = 0; i < longitud; i++) {
-        valor = precios[i] + corteR(precios, longitud - i - 1, padre);
-        //console.log(valor);
-        if (valor > valmax) {
-            valmax = valor;
-        }
-
-    }
-
-    return valmax;
-}
-
 
 function brutaCorte(nodo) {
     const fila = document.createElement('div');
