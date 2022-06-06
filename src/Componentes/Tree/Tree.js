@@ -21,8 +21,6 @@ Tree.prototype.addValue = function (val, padre) {
         n.id = 0;
         this.nodesID.push(n.id);
         this.root = n;
-        this.root.x = width / 2;
-        this.root.y = 46;
     } else {
         n.parent = padre;
         n.id = this.nodesID[this.nodesID.length-1] + 1;

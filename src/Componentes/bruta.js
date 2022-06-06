@@ -1,9 +1,6 @@
 import 'bootstrap';
 import crearFraja from './Franja';
-import p5 from 'p5';
 import Tree from './Tree/Tree';
-
-new p5();
 
 let precios = [];
 let longitud;
