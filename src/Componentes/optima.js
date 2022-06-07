@@ -18,11 +18,12 @@ function optimaCanvas(nodo) {
     nodo.appendChild(fila);
     const canvasDiv = document.createElement('div');
     col1.appendChild(crearFraja("Solución por DP (Dynammic Programing)"));
-    canvasDiv.id = "canvas";
+    canvasDiv.id = "canvasID";
     col1.appendChild(canvasDiv);
     const canvas = document.createElement('canvas');
     canvas.width = 948;
     canvas.height = 500;
+    canvas.id = "canvas"
     canvasDiv.appendChild(canvas);
 }
 

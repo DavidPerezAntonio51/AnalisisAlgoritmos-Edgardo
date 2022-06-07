@@ -58,7 +58,7 @@ function Sim(contenedor, changeToHome) {
             optimaModule.optimaCanvas(optima);
             const handlerStartAnim = () => {
                 let precios = getValues();
-                main();
+                main(precios.length, precios);
             }
             botonStart.onclick = handlerStartAnim;
         }
@@ -216,7 +216,7 @@ function getValues(){
         //console.log(id);
         let price = document.getElementById(id);
         if(price.value !== ''){
-            precios.push(price.value);
+            precios.push(parseInt(price.value, 10));
         }else{
             price.value = Math.floor(Math.random() * (21 - 1) + 1);
             precios.push(price.value);
