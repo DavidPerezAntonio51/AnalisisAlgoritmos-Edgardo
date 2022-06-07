@@ -10,8 +10,6 @@ var valsMax = [];
 
 function crearAnimacion(tprecios, longitud) {
   var selector = document.getElementById('tamñoElegido').value;
-  //var valor = selector.getAttributeNode();
-  ////console.log(selector);
   arbol = new Tree();
   corteR(tprecios, longitud, null);
   let nodes = [];
@@ -26,8 +24,6 @@ function crearAnimacion(tprecios, longitud) {
   nodes[0].data.value = valsMax[0][1].toString() + " " + pila[0].value.toString();
   nodes[0].position.x = 890;
   nodes[0].position.y = 490;
-  ////console.log(edges);
-  ////console.log(valsMax);
   cytoscape.use(dagre);
   var cy = cytoscape({
     container: document.getElementById("canvas"),
@@ -69,7 +65,6 @@ function crearAnimacion(tprecios, longitud) {
     }
   });
 
-  //console.log(cy.nodes()[9].connectedEdges()[0].source().id());
   animacionArbol(cy);
 
 }
@@ -96,43 +91,19 @@ function corteR(precios, longitud, padre) {
 }
 
 function animacionArbol(cy) {
-  var nodo0 = cy.$id('0');
-  var nodo1 = cy.$id('1');
-
-  var posN0 = cy.$id('0').position();
-  var posN1 = cy.$id('1').position();
-
   var nodes = cy.nodes();
   var edges = cy.edges();
   var posFinal = [];
   var posInicial = [];
-  
 
-  for (let i = 1; i < nodes.length; i++) {
-    posFinal.push({x: nodes[i].position().x, y: nodes[i].position().y});
+
+  for (let i = 0; i < nodes.length; i++) {
+    posFinal.push({ x: nodes[i].position().x, y: nodes[i].position().y });
+    posInicial.push({ x: nodes[i].connectedEdges()[0].source().position('x'), y: nodes[i].connectedEdges()[0].source().position('y') });
     nodes[i].style({
       'opacity': 0,
     });
   }
-  for (let i = 1; i < nodes.length; i++){
-    //console.log(posFinal[parseInt(nodes[i].connectedEdges()[0].source().id(), 10)]);
-    if (parseInt(nodes[i].connectedEdges()[0].source().id(), 10) == 0){
-      nodes[i].position({ 
-        x: nodes[0].position('x'),
-        y: nodes[0].position('y') 
-      });
-    }
-    nodes[i].position({ 
-      x: posFinal[parseInt(nodes[i].connectedEdges()[0].source().id(), 10)].x,
-      y: posFinal[parseInt(nodes[i].connectedEdges()[0].source().id(), 10)].y 
-    });
-    //console.log(nodes[i].position());
-    posInicial.push({
-      x: nodes[i].position('x'),
-      y: nodes[i].position('y')
-    });
-  }
-  //console.log(posFinal, posInicial);
 
   edges.forEach(edge => {
     edge.style({
@@ -140,51 +111,40 @@ function animacionArbol(cy) {
     })
   })
 
-  ////console.log(posFinal.length);
-
   var animation = anime.timeline({
-    targets: posInicial[0],
     autoplay: true,
     delay: 400,
     duration: 1100,
     endDelay: 400,
-    easing: 'linear',
-    /*update: (anim) => {
-      nodes[0].position(anim.animatables[0].target);
-    }*/
+    easing: 'easeOutBounce',
   });
-  
-  for (let i = 1; i < nodes.length; i++) {
+
+  for (let i = 0, e = 1; i < nodes.length; i++, e++) {
     animation.add({
-      targets: posInicial[i-1],
+      targets: posInicial[i],
       duration: 1100,
-      x: posFinal[i-1].x,
-      y: posFinal[i-1].y,
+      x: posFinal[i].x,
+      y: posFinal[i].y,
       update: (anim) => {
         nodes[i].position(anim.animatables[0].target);
         nodes[i].style({
           'opacity': 1
         });
-        edges[i-1].style({
-          'opacity': 1
-        });
+        if (i != 0) {
+          nodes[i].connectedEdges()[0].style({
+            'opacity': 1
+          });
+          cy.center(nodes[i]);
+        }
       }
     });
   }
-
-  /*anime({
-    targets: posInicial,
-    duration: 3000,
-    easing: 'linear',
-    x: 20,
-    y: 20,
+  animation.add({
+    duration: 100,
     update: (anim) => {
-      for (let i = 0; i < anim.animatables.length; i++) {
-        nodes[i].position(anim.animatables[i].target);
-      }
+      cy.center();
     }
-  });*/
-
+  })
 }
 
 export default crearAnimacion;
