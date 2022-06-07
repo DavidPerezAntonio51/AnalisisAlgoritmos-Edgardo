@@ -3,7 +3,7 @@ import Zfont from 'zfont';
 import anime from 'animejs';
 
 function main(n, prices) {
-  for (let i = 0; i < n; i++){
+  for (let i = 0; i < n; i++) {
     prices[i] = parseInt(prices[i], 10);
   }
   cutRod(n, prices);
@@ -119,7 +119,7 @@ function cutRod(n, prices) {
     autoplay: true,
     loop: false,
   });
-  for (let i = 0; i < n; i++){
+  for (let i = 0; i < n; i++) {
     timeline.add({
       targets: pricesText[i],
       scale: 1,
@@ -159,7 +159,7 @@ function cutRod(n, prices) {
     height: 35,
     fill: true,
     color: '#97cADB',
-    translate: {x: -(width/2)+105, y: -(height/2)+20},
+    translate: { x: -(width / 2) + 105, y: -(height / 2) + 20 },
   });
 
   new Zdog.Text({
@@ -171,14 +171,14 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = {x: 3, y: -7};
+  }).translate = { x: 3, y: -7 };
 
   var rectSVA = new Zdog.Rect({
     addTo: illustration,
     width: 60,
     height: 35,
     stroke: 0,
-    translate: {x: -(width/2)+240, y: -(height/2)+20},
+    translate: { x: -(width / 2) + 240, y: -(height / 2) + 20 },
   });
 
   var vaVal = new Zdog.Text({
@@ -189,9 +189,10 @@ function cutRod(n, prices) {
     textAlign: 'center',
     textBaseline: 'middle',
     color: '#000000',
-    scale: 0,
     fill: true
-  }).translate = {x: -1, y: -8};
+  });
+  vaVal.scale = 0;
+  vaVal.translate = { x: -1, y: -8 };
 
   var rectI = new Zdog.Rect({
     addTo: illustration,
@@ -199,7 +200,7 @@ function cutRod(n, prices) {
     height: 35,
     fill: true,
     color: '#97cADB',
-    translate: {x: -(width/2)+25, y: -(height/2)+60},
+    translate: { x: -(width / 2) + 25, y: -(height / 2) + 60 },
   });
 
   new Zdog.Text({
@@ -211,14 +212,14 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = {x: 2, y: -8};
+  }).translate = { x: 2, y: -8 };
 
   var rectSI = new Zdog.Rect({
     addTo: illustration,
     width: 40,
     height: 35,
     stroke: 0,
-    translate: {x: -(width/2)+70, y: -(height/2)+60},
+    translate: { x: -(width / 2) + 70, y: -(height / 2) + 60 },
   });
 
   var iVal = new Zdog.Text({
@@ -231,7 +232,9 @@ function cutRod(n, prices) {
     color: '#000000',
     scale: 0,
     fill: true
-  }).translate = {x: -1, y: -8};
+  });
+  iVal.scale = 0;
+  iVal.translate = { x: -1, y: -8 };
 
   var rectJ = new Zdog.Rect({
     addTo: illustration,
@@ -239,7 +242,7 @@ function cutRod(n, prices) {
     height: 35,
     fill: true,
     color: '#97cADB',
-    translate: {x: -(width/2)+25, y: -(height/2)+100},
+    translate: { x: -(width / 2) + 25, y: -(height / 2) + 100 },
   });
 
   new Zdog.Text({
@@ -251,14 +254,14 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = {x: 2, y: -8};
+  }).translate = { x: 2, y: -8 };
 
   var rectSJ = new Zdog.Rect({
     addTo: illustration,
     width: 40,
     height: 35,
     stroke: 0,
-    translate: {x: -(width/2)+70, y: -(height/2)+100},
+    translate: { x: -(width / 2) + 70, y: -(height / 2) + 100 },
   });
 
   var jVal = new Zdog.Text({
@@ -271,7 +274,9 @@ function cutRod(n, prices) {
     color: '#000000',
     scale: 0,
     fill: true
-  }).translate = {x: -1, y: -8};
+  });
+  jVal.scale = 0;
+  jVal.translate = { x: -1, y: -8 };
 
   var rectVM = new Zdog.Rect({
     addTo: illustration,
@@ -279,7 +284,7 @@ function cutRod(n, prices) {
     height: 35,
     fill: true,
     color: '#97cADB',
-    translate: {x: -(width/2)+110, y: -(height/2)+140},
+    translate: { x: -(width / 2) + 110, y: -(height / 2) + 140 },
   });
 
   new Zdog.Text({
@@ -291,14 +296,14 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = {x: 3, y: -7};
+  }).translate = { x: 3, y: -7 };
 
   var rectSVM = new Zdog.Rect({
     addTo: illustration,
     width: 60,
     height: 35,
     stroke: 0,
-    translate: {x: -(width/2)+250, y: -(height/2)+140},
+    translate: { x: -(width / 2) + 250, y: -(height / 2) + 140 },
   });
 
   var vmVal = new Zdog.Text({
@@ -311,10 +316,20 @@ function cutRod(n, prices) {
     color: '#000000',
     scale: 0,
     fill: true
-  }).translate = {x: -1, y: -8};
+  });
+  vmVal.scale = 0;
+  vmVal.translate = { x: -1, y: -8 };
 
-  for (let i = 0; i <= n; i++){
-    timeline.add({
+  const timeline1 = anime.timeline({
+    duration: 1100,
+    easing: 'easeOutElastic',
+    direction: 'alternate',
+    autoplay: true,
+    loop: false,
+  });
+
+  for (let i = 0; i <= n; i++) {
+    timeline1.add({
       targets: valsText[i],
       scale: 1,
       duration: 1100,
@@ -324,8 +339,9 @@ function cutRod(n, prices) {
     });
   }
 
-  timeline.add({
-    targets: vaVal,
+  console.log(valsText[0], vaVal)
+  timeline1.add({
+    targets: [vaVal, iVal, jVal, vmVal],
     scale: 1,
     duration: 1100,
     update: () => {
@@ -334,14 +350,53 @@ function cutRod(n, prices) {
   });
 
   for (let i = 1; i <= n; i++) {
+    timeline1.add({
+      duration: 1100,
+      update: () => {
+        iVal.value = (i).toString(),
+        jVal.value = '0',
+        illustration.updateRenderGraph();
+      }
+    });
     var max_val = Number.MIN_VALUE;
     for (let j = 0; j < i; j++) {
+      timeline1.add({
+        duration: 1100,
+        update: () => {
+          jVal.value = (j).toString(),
+          illustration.updateRenderGraph();
+        }
+      });
       valor = prices[j] + val[i - j - 1];
+      timeline1.add({
+        duration: 1100,
+        update: () => {
+          vaVal.value = (valor).toString(),
+          illustration.updateRenderGraph();
+        }
+      });
       if (valor > max_val) {
         max_val = valor;
+        timeline1.add({
+          duration: 1100,
+          update: () => {
+            vmVal.value = (max_val).toString(),
+            illustration.updateRenderGraph();
+          }
+        });
       }
     }
     val[i] = max_val;
+  }
+
+  for (let i = 0; i <= n; i++){
+    timeline1.add({
+      duration: 1100,
+      update: () => {
+        valsText[i].value = (val[i]).toString(),
+        illustration.updateRenderGraph();
+      }
+    });
   }
   return val[n];
 }
