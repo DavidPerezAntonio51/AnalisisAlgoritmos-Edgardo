@@ -44,7 +44,7 @@ function Sim(contenedor, changeToHome) {
     optionsMount(selector);
     const handlerChangeSelector = (event) => {
         if (event.target.value === "bruta") {
-            //fila3.replaceChildren(bruta);
+            fila3.replaceChildren(bruta);
             brutaModule.brutaCorte(bruta);
             const handlerStartAnim = () => {
                 let precios = getValues();
@@ -214,7 +214,13 @@ function getValues(){
     for (let i = 0; i < len; i++){
         let id = idSinNum + (i + 1);
         //console.log(id);
-        precios.push(document.getElementById(id).value);
+        let price = document.getElementById(id);
+        if(price.value !== ''){
+            precios.push(price.value);
+        }else{
+            price.value = Math.floor(Math.random() * (21 - 1) + 1);
+            precios.push(price.value);
+        }
     }
     return precios;
 }
