@@ -2,11 +2,21 @@ import Zdog from 'zdog';
 import Zfont from 'zfont';
 import anime from 'animejs';
 
+let myFont;
+
 function main(n, prices) {
+
+  Zfont.init(Zdog);
+
+  myFont = new Zdog.Font({
+    src: 'https://cdn.jsdelivr.net/npm/@expo-google-fonts/quicksand@0.2.2/Quicksand_400Regular.ttf'
+  });
+
   for (let i = 0; i < n; i++) {
     prices[i] = parseInt(prices[i], 10);
   }
-  cutRod(n, prices);
+
+  Zdog.waitForFonts().then(cutRod(n, prices));
 }
 
 function cutRod(n, prices) {
@@ -15,7 +25,6 @@ function cutRod(n, prices) {
   var height = canvas.height;
   console.log(width, height)
 
-  Zfont.init(Zdog);
   const {
     Illustration, Ellipse, Rect, Shape, Group, Anchor,
   } = Zdog;
@@ -24,10 +33,6 @@ function cutRod(n, prices) {
   const illustration = new Illustration({
     element: 'canvas',
     dragRotate: true,
-  });
-
-  let myFont = new Zdog.Font({
-    src: "https://cdn.jsdelivr.net/gh/jaames/zfont/demo/fredokaone.ttf",
   });
 
   let div = new Zdog.Rect({
@@ -109,7 +114,111 @@ function cutRod(n, prices) {
     pricesText[i].scale = 0;
   }
 
-  console.log(pricesText);
+  let divop = new Zdog.Rect({
+    addTo: illustration,
+    width: 100 * 5,
+    height: 100,
+    stroke: 0,
+    translate: { x: 35 },
+  });
+
+  let op1 = new Zdog.Rect({
+    addTo: divop,
+    width: 100,
+    height: 100,
+    stroke: 10,
+    translate: { x: -200 }
+  });
+
+  let op2 = new Zdog.Rect({
+    addTo: divop,
+    width: 100,
+    height: 100,
+    stroke: 10,
+    translate: { x: -100 }
+  });
+
+  let mas = new Zdog.Text({
+    addTo: op2,
+    font: myFont,
+    value: '+',
+    fontSize: 56,
+    textAlign: 'center',
+    textBaseline: 'middle',
+    color: '#000000',
+    fill: true,
+    translate: { y: -15 }
+  });
+
+  mas.scale = 0;
+
+  let op3 = new Zdog.Rect({
+    addTo: divop,
+    width: 100,
+    height: 100,
+    stroke: 10,
+  });
+
+  let mque = new Zdog.Text({
+    addTo: op3,
+    font: myFont,
+    value: '>',
+    fontSize: 56,
+    textAlign: 'center',
+    textBaseline: 'middle',
+    color: '#000000',
+    fill: true,
+    translate: { y: -15 }
+  });
+
+  mque.scale = 0;
+
+  let op4 = new Zdog.Rect({
+    addTo: divop,
+    width: 100,
+    height: 100,
+    stroke: 10,
+    translate: { x: 100 }
+  });
+
+  let igual = new Zdog.Text({
+    addTo: op4,
+    font: myFont,
+    value: '=',
+    fontSize: 56,
+    textAlign: 'center',
+    textBaseline: 'middle',
+    color: '#000000',
+    fill: true,
+    translate: { y: -15 }
+  });
+
+  igual.scale = 0;
+
+  let op5 = new Zdog.Rect({
+    addTo: divop,
+    width: 100,
+    height: 100,
+    stroke: 10,
+    translate: { x: 200 }
+  });
+
+  let valOp5 = new Zdog.Text({
+    addTo: op5,
+    font: myFont,
+    value: '.',
+    fontSize: 56,
+    textAlign: 'center',
+    textBaseline: 'middle',
+    color: '#000000',
+    fill: true,
+    translate: { y: -15 }
+  });
+
+  valOp5.scale = 0;
+
+  divop.addChild(op1);
+
   illustration.updateRenderGraph();
 
   const timeline = anime.timeline({
@@ -155,11 +264,11 @@ function cutRod(n, prices) {
 
   var rectVA = new Zdog.Rect({
     addTo: illustration,
-    width: 200,
+    width: 185,
     height: 35,
     fill: true,
     color: '#97cADB',
-    translate: { x: -(width / 2) + 105, y: -(height / 2) + 20 },
+    translate: { x: -(width / 2) + 98, y: -(height / 2) + 20 },
   });
 
   new Zdog.Text({
@@ -171,7 +280,7 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = { x: 3, y: -7 };
+  }).translate = { x: 2, y: -7 };
 
   var rectSVA = new Zdog.Rect({
     addTo: illustration,
@@ -296,7 +405,7 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = { x: 3, y: -7 };
+  }).translate = { x: 1, y: -7 };
 
   var rectSVM = new Zdog.Rect({
     addTo: illustration,
@@ -339,7 +448,6 @@ function cutRod(n, prices) {
     });
   }
 
-  console.log(valsText[0], vaVal)
   timeline1.add({
     targets: [vaVal, iVal, jVal, vmVal],
     scale: 1,
@@ -349,12 +457,14 @@ function cutRod(n, prices) {
     }
   });
 
+  console.log(vaVal, op1);
   for (let i = 1; i <= n; i++) {
     timeline1.add({
       duration: 1100,
       update: () => {
-        iVal.value = (i).toString(),
-        jVal.value = '0',
+        iVal.value = (i).toString();
+        jVal.value = '0';
+        vmVal.value = '-inf';
         illustration.updateRenderGraph();
       }
     });
@@ -363,15 +473,74 @@ function cutRod(n, prices) {
       timeline1.add({
         duration: 1100,
         update: () => {
-          jVal.value = (j).toString(),
+          jVal.value = (j).toString();
           illustration.updateRenderGraph();
         }
       });
       valor = prices[j] + val[i - j - 1];
+
       timeline1.add({
+        targets: pricesText[j],
+        update: () => {
+          op1.addChild(pricesText[j]);
+          pricesText[j].translate = { y: -20 };
+          illustration.updateRenderGraph();
+        },
+        scale: 2.5,
+        duration: 1100,
+      });
+      timeline1.add({
+        targets: mas,
+        scale: 1,
         duration: 1100,
         update: () => {
-          vaVal.value = (valor).toString(),
+          illustration.updateRenderGraph();
+        },
+      });
+      timeline1.add({
+        targets: valsText[i - j - 1],
+        update: () => {
+          op3.addChild(valsText[i - j - 1]);
+          valsText[i - j - 1].translate = { y: -20 };
+          illustration.updateRenderGraph();
+        },
+        scale: 1.8,
+        duration: 1100,
+      });
+      timeline1.add({
+        targets: igual,
+        scale: 1,
+        duration: 1100,
+        update: () => {
+          illustration.updateRenderGraph();
+        },
+      });
+      timeline1.add({
+        targets: [valOp5, vaVal],
+        duration: 1100,
+        update: () => {
+          valOp5.visible = true;
+          valOp5.value = (prices[j] + val[i - j - 1]).toString();
+          vaVal.value = (prices[j] + val[i - j - 1]).toString();
+          valOp5.scale = 1;
+          illustration.updateRenderGraph();
+        },
+      });
+      timeline1.add({
+        targets: rectSVA,
+        duration: 1100,
+        update: () => {
+          rectSVA.addChild(vaVal);
+          vaVal.scale = 1;
+          igual.scale = 0;
+          valsBoxes[i - j - 1].addChild(valsText[i - j - 1]);
+          valsText[i - j - 1].scale = 1;
+          valsText[i - j - 1].translate = { y: -9 };
+          mas.scale = 0;
+          pricesBoxes[j].addChild(pricesText[j]);
+          pricesText[j].scale = 1;
+          pricesText[j].translate = { y: -7 };
+          valOp5.visible = false;
           illustration.updateRenderGraph();
         }
       });
@@ -380,24 +549,112 @@ function cutRod(n, prices) {
         timeline1.add({
           duration: 1100,
           update: () => {
-            vmVal.value = (max_val).toString(),
+            op2.addChild(vaVal);
+            vaVal.translate = { y: -20 };
+            vaVal.scale = 2;
+            illustration.updateRenderGraph();
+          }
+        });
+        timeline1.add({
+          duration: 1100,
+          update: () => {
+            op4.addChild(vmVal);
+            vmVal.translate = { y: -20 };
+            vmVal.scale = 2;
+            illustration.updateRenderGraph();
+          }
+        });
+        timeline1.add({
+          targets: mque,
+          duration: 1100,
+          update: () => {
+            mque.scale = 1;
+            illustration.updateRenderGraph();
+          }
+        });
+        timeline1.add({
+          duration: 1100,
+          update: () => {
+            vmVal.value = val[i].toString();
+            illustration.updateRenderGraph();
+          }
+        });
+        timeline1.add({
+          duration: 1100,
+          update: () => {
+            rectSVA.addChild(vaVal);
+            vaVal.translate = { y: -8 };
+            vaVal.scale = 1;
+            mque.scale = 0;
+            rectSVM.addChild(vmVal);
+            vmVal.translate = { y: -8 };
+            vmVal.scale = 1;
+            illustration.updateRenderGraph();
+          }
+        });
+      } else {
+        timeline1.add({
+          duration: 1100,
+          update: () => {
+            op2.addChild(vaVal);
+            vaVal.translate = { y: -20 };
+            vaVal.scale = 2;
+            illustration.updateRenderGraph();
+          }
+        });
+        timeline1.add({
+          duration: 1100,
+          update: () => {
+            op4.addChild(vmVal);
+            vmVal.translate = { y: -20 };
+            vmVal.scale = 2;
+            illustration.updateRenderGraph();
+          }
+        });
+        timeline1.add({
+          targets: mque,
+          duration: 1100,
+          update: () => {
+            mque.value = '<';
+            mque.scale = 1;
+            illustration.updateRenderGraph();
+          }
+        });
+        timeline1.add({
+          duration: 1100,
+          update: () => {
+            rectSVA.addChild(vaVal);
+            vaVal.translate = { y: -8 };
+            vaVal.scale = 1;
+            mque.scale = 0;
+            rectSVM.addChild(vmVal);
+            vmVal.translate = { y: -8 };
+            mque.value = '>';
+            vmVal.scale = 1;
             illustration.updateRenderGraph();
           }
         });
       }
     }
-    val[i] = max_val;
-  }
-
-  for (let i = 0; i <= n; i++){
     timeline1.add({
       duration: 1100,
       update: () => {
-        valsText[i].value = (val[i]).toString(),
+        valsText[i].value = val[i].toString();
         illustration.updateRenderGraph();
       }
     });
+    val[i] = max_val;
   }
+
+  // for (let i = 0; i <= n; i++) {
+  //   timeline1.add({
+  //     duration: 1100,
+  //     update: () => {
+  //       valsText[i].value = (val[i]).toString(),
+  //         illustration.updateRenderGraph();
+  //     }
+  //   });
+  // }
   return val[n];
 }
 
