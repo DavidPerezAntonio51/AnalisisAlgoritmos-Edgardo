@@ -489,38 +489,34 @@ function cutRod(n, prices) {
       valor = prices[j] + val[i - j - 1];
 
       timeline1.add({
-        targets: pricesText[j],
         update: () => {
           op1.addChild(pricesText[j]);
           pricesText[j].translate = { y: -5 };
+          pricesText[j].scale = 2;
           illustration.updateRenderGraph();
         },
-        scale: 2,
         duration: 1100,
       });
       timeline1.add({
-        targets: mas,
-        scale: 1,
         duration: 1100,
         update: () => {
+          mas.scale = 1;
           illustration.updateRenderGraph();
         },
       });
       timeline1.add({
-        targets: valsText[i - j - 1],
         update: () => {
           op3.addChild(valsText[i - j - 1]);
           valsText[i - j - 1].translate = { y: -5 };
+          valsText[i-j-1].scale = 1.3;
           illustration.updateRenderGraph();
         },
-        scale: 1.3,
         duration: 1100,
       });
       timeline1.add({
-        targets: igual,
-        scale: 1,
         duration: 1100,
         update: () => {
+          igual.scale = 1;
           illustration.updateRenderGraph();
         },
       });
