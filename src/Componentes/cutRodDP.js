@@ -672,18 +672,6 @@ function cutRod(n, prices) {
     val[i] = max_val;
   }
 
-  let iteraciones = new Zdog.Text({
-    addTo: illustration,
-    font: myFont,
-    value: cont,
-    fontSize: 20,
-    textAlign: 'center',
-    textBaseline: 'middle',
-    color: '#000000',
-    fill: true,
-    translate: { x: -(width / 2) + 175, y: (height / 2) - 19 }
-  });
-
   illustration.updateRenderGraph();
   return val[n];
 }

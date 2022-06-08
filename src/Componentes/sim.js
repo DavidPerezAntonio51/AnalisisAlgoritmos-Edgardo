@@ -9,6 +9,7 @@ import brutavsdp from "./brutavsDP";
 function Sim(contenedor, changeToHome) {
     /*Declaracion de elementos */
     const botonHome = document.createElement('button');
+    const botonReset = document.createElement('button');
     const botonStart = document.createElement('button');
     const botonPlay = document.createElement('button');
     const botonPause = document.createElement('button');
@@ -28,6 +29,7 @@ function Sim(contenedor, changeToHome) {
     /*Clases de bootstrap */
     selector.classList.add("form-select", "form-select-lg", "my-2");
     botonHome.classList.add("btn", "btn-bondi");
+    botonReset.classList.add("btn", "btn-bondi");
     botonStart.classList.add("btn", "btn-outline-bondi");
     botonPlay.classList.add("btn", "btn-outline-bondi");
     botonPause.classList.add("btn", "btn-outline-bondi");
@@ -52,10 +54,12 @@ function Sim(contenedor, changeToHome) {
     botonPause.disabled = true;
     botonRestart.textContent = "Reiniciar animación";
     botonRestart.disabled = true;
+    botonReset.disabled = true;
     bruta.id = "bruta";
     optima.id = "optima";
     comparacion.id = "comparacion";
     botonHome.textContent = "Regresar";
+    botonReset.textContent = "Resetear animación"
     botonHome.onclick = changeToHome;
     mountRow2(fila2, col21, col22, botonStart, botonPlay, botonPause, botonRestart);
     optionsMount(selector);
@@ -72,7 +76,15 @@ function Sim(contenedor, changeToHome) {
                 let precios = getValues();
                 crearAnimacion(precios, precios.length);
             }
+
+            const handlerResetAnim = () => {
+                var canvas = document.getElementById('canvas');
+                ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
             botonStart.onclick = handlerStartAnim;
+            botonReset.disabled = false;
+            botonReset.onclick = handlerResetAnim;
             botonPlay.disabled = true;
             botonPause.disabled = true;
             botonRestart.disabled = true;
@@ -97,7 +109,14 @@ function Sim(contenedor, changeToHome) {
                 botonRestart.disabled = false;
                 let precios = getValues();
                 main(precios.length, precios);
-            }
+            };
+
+            const handlerResetAnim = () => {
+                location.reload();
+            };
+
+            botonReset.disabled = false;
+            botonReset.onclick = handlerResetAnim;
             botonStart.onclick = handlerStartAnim;
             botonPlay.disabled = true;
             botonPause.disabled = true;
@@ -105,7 +124,7 @@ function Sim(contenedor, changeToHome) {
         }
     }
     selector.onchange = handlerChangeSelector;
-    franjaItems(fila1, col11, col12, col13, botonHome, selector);
+    franjaItems(fila1, col11, col12, col13, botonHome, botonReset, selector);
     fila3.appendChild(bruta);
     contenedor.appendChild(fila1);
     contenedor.appendChild(fila2);
@@ -198,8 +217,8 @@ function mountRow2(fila2, col1, col2, botonStart, botonPlay, botonPause, botonRe
     col1Aux.classList.add('col');
     col2Aux.classList.add('col');
     filaAux.classList.add("row");
-    fila1Aux.classList.add("row","py-2");
-    fila2Aux.classList.add("row","py-2");
+    fila1Aux.classList.add("row", "py-2");
+    fila2Aux.classList.add("row", "py-2");
     col11.classList.add("col");
     col12.classList.add("col");
     col21.classList.add("col");
@@ -257,11 +276,18 @@ function optionsMount(selector) {
     selector.appendChild(op3);
 }
 
-function franjaItems(fila1, col11, col12, col13, buttonBack, selector) {
+function franjaItems(fila1, col11, col12, col13, buttonBack, botonReset, selector) {
     fila1.classList.add("franja");
     col12.appendChild(selector);
     col11.appendChild(crearFraja("BIENVENIDO AL SIMULADOR: "));
-    col13.appendChild(buttonBack);
+    var col131 = document.createElement('div');
+    var col132 = document.createElement('div');
+    col131.classList.add("col", "centerDiv");
+    col132.classList.add("col", "centerDiv");
+    col13.appendChild(col131);
+    col13.appendChild(col132);
+    col131.appendChild(buttonBack);
+    col132.appendChild(botonReset);
     fila1.appendChild(col11);
     fila1.appendChild(col12);
     fila1.appendChild(col13);
