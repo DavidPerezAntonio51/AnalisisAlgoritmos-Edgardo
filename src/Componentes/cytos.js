@@ -146,9 +146,9 @@ function animacionArbol(cy) {
     }
   })
 
-  document.getElementById("canvas").onclick = animation.play;
-  document.getElementById("canvas").onclick = animation.pause;
-  document.getElementById("canvas").onclick = animation.restart;
+  document.getElementById("play").onclick = animation.play;
+  document.getElementById("pause").onclick = animation.pause;
+  document.getElementById("restart").onclick = animation.restart;
 }
 
 export default crearAnimacion;
