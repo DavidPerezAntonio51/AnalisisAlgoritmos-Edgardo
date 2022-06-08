@@ -178,6 +178,12 @@ function mountRow2(fila2, col1, col2, botonStart, botonPlay, botonPause, botonRe
     const trPrecio = document.createElement('tr');
     const thPrecio = document.createElement('th');
     const thTamaño = document.createElement('th');
+    const fila1Aux = document.createElement('div');
+    const fila2Aux = document.createElement('div');
+    const col11 = document.createElement('div');
+    const col12 = document.createElement('div');
+    const col21 = document.createElement('div');
+    const col22 = document.createElement('div');
     const handlerChangeSize = (event) => {
         if (event.target.value > 0) {
             console.log(event.target.value);
@@ -192,18 +198,30 @@ function mountRow2(fila2, col1, col2, botonStart, botonPlay, botonPause, botonRe
     col1Aux.classList.add('col');
     col2Aux.classList.add('col');
     filaAux.classList.add("row");
+    fila1Aux.classList.add("row","py-2");
+    fila2Aux.classList.add("row","py-2");
+    col11.classList.add("col");
+    col12.classList.add("col");
+    col21.classList.add("col");
+    col22.classList.add("col");
     resposiveTable.classList.add('table-responsive');
     selector.onchange = handlerChangeSize;
     selectorLabel.textContent = "Elige el tamaño de varilla:";
     selector.id = "tamñoElegido";
     thPrecio.textContent = "Precio";
     thTamaño.textContent = "Tamaño";
+    col11.appendChild(botonStart);
+    col12.appendChild(botonPause);
+    col21.appendChild(botonPlay);
+    col22.appendChild(botonRestart);
     col1Aux.appendChild(selectorLabel);
     col1Aux.appendChild(selector);
-    col2Aux.appendChild(botonStart);
-    col2Aux.appendChild(botonPlay);
-    col2Aux.appendChild(botonPause);
-    col2Aux.appendChild(botonRestart);
+    col2Aux.appendChild(fila1Aux);
+    col2Aux.appendChild(fila2Aux);
+    fila1Aux.appendChild(col11);
+    fila1Aux.appendChild(col12);
+    fila2Aux.appendChild(col21);
+    fila2Aux.appendChild(col22);
     filaAux.appendChild(col1Aux);
     filaAux.appendChild(col2Aux);
     trPrecio.appendChild(thPrecio);
