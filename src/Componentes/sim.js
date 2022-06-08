@@ -3,6 +3,7 @@ import crearAnimacion from "./cytos";
 import crearFraja from "./Franja";
 import optimaModule from "./optima";
 import main from "./cutRodDP";
+import comparacionSoluciones from "./vs";
 
 function Sim(contenedor, changeToHome) {
     /*Declaracion de elementos */
@@ -42,10 +43,12 @@ function Sim(contenedor, changeToHome) {
     botonHome.onclick = changeToHome;
     mountRow2(fila2, col21, col22, botonStart);
     optionsMount(selector);
+            brutaModule.brutaCorte(bruta);
+            comparacionSoluciones(comparacion);
+            optimaModule.optimaCanvas(optima);
     const handlerChangeSelector = (event) => {
         if (event.target.value === "bruta") {
             fila3.replaceChildren(bruta);
-            brutaModule.brutaCorte(bruta);
             const handlerStartAnim = () => {
                 let precios = getValues();
                 crearAnimacion(precios, precios.length);
@@ -55,7 +58,6 @@ function Sim(contenedor, changeToHome) {
             fila3.replaceChildren(comparacion);
         } else if (event.target.value === "optima") {
             fila3.replaceChildren(optima);
-            optimaModule.optimaCanvas(optima);
             const handlerStartAnim = () => {
                 let precios = getValues();
                 main(precios.length, precios);
