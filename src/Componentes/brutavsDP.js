@@ -613,6 +613,37 @@ function cutRod(n, prices, cy) {
     }
 
     const handlerTwoRestart = () => {
+        for (let i = 0; i < nodes.length; i++) {
+            nodes[i].style({
+                'opacity': 0,
+            });
+            if (i != 0) {
+                nodes[i].connectedEdges()[0].style({
+                    'opacity': 0
+                });
+            }
+        }
+        for (let i = 0; i <= n; i++) {
+            valsBoxes[i].addChild(valsText[i]);
+            valsText[i].translate.y = -5;
+            valsText[i].scale = 0;
+        }
+        for (let i = 0; i < n; i++) {
+            pricesBoxes[i].addChild(pricesText[i]);
+            pricesText[i].translate.y = -2;
+            pricesText[i].scale = 0;
+        }
+        mque.scale = 0;
+        mas.scale = 0;
+        igual.scale = 0;
+        rectSVM.addChild(vmVal);
+        vmVal.scale = 1;
+        vmVal.translate = { y: -2 };
+        rectSVA.addChild(vaVal);
+        vaVal.scale = 1;
+        vaVal.translate = { y: -2 };
+        valOp5.scale = 0;
+
         animation.restart();
         timeline.restart();
         timeline1.restart();

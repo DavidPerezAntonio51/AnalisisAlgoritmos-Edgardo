@@ -146,9 +146,23 @@ function animacionArbol(cy) {
     }
   })
 
+  const handlerAnimRestart = () => {
+    for (let i = 0; i < nodes.length; i++) {
+      nodes[i].style({
+        'opacity': 0,
+      });
+      if (i != 0) {
+        nodes[i].connectedEdges()[0].style({
+          'opacity': 0
+        });
+      }
+    }
+    animation.restart();
+  }
+
   document.getElementById("play").onclick = animation.play;
   document.getElementById("pause").onclick = animation.pause;
-  document.getElementById("restart").onclick = animation.restart;
+  document.getElementById("restart").onclick = handlerAnimRestart;
 }
 
 export default crearAnimacion;

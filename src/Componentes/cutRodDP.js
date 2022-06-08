@@ -438,14 +438,35 @@ function cutRod(n, prices) {
     loop: false,
   });
 
-    const handlerAnimRestart = () => {
-      timeline.restart();
-      timeline1.restart();
-      console.log(valsText);
+  const handlerAnimRestart = () => {
+    for (let i = 0; i <= n; i++) {
+      valsBoxes[i].addChild(valsText[i]);
+      valsText[i].translate.y = -5;
+      valsText[i].scale = 0;
     }
-    document.getElementById("play").onclick = timeline1.play;
-    document.getElementById("pause").onclick = timeline1.pause;
-    document.getElementById("restart").onclick = handlerAnimRestart;
+    for (let i = 0; i < n; i++) {
+      pricesBoxes[i].addChild(pricesText[i]);
+      pricesText[i].translate.y = -2;
+      pricesText[i].scale = 0;
+    }
+    mque.scale = 0;
+    mas.scale = 0;
+    igual.scale = 0;
+    rectSVM.addChild(vmVal);
+    vmVal.scale = 1;
+    vmVal.translate = {y: -2};
+    rectSVA.addChild(vaVal);
+    vaVal.scale = 1;
+    vaVal.translate = {y: -2};
+    valOp5.scale = 0;
+
+    timeline.restart();
+    timeline1.restart();
+    console.log(valsText);
+  }
+  document.getElementById("play").onclick = timeline1.play;
+  document.getElementById("pause").onclick = timeline1.pause;
+  document.getElementById("restart").onclick = handlerAnimRestart;
   for (let i = 0; i <= n; i++) {
     timeline1.add({
       targets: valsText[i],
@@ -508,7 +529,7 @@ function cutRod(n, prices) {
         update: () => {
           op3.addChild(valsText[i - j - 1]);
           valsText[i - j - 1].translate = { y: -5 };
-          valsText[i-j-1].scale = 1.3;
+          valsText[i - j - 1].scale = 1.3;
           illustration.updateRenderGraph();
         },
         duration: 1100,
