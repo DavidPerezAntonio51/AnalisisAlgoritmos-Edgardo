@@ -40,6 +40,12 @@ body{
   font-size: 80%;
 }
 
+#cy {
+  width: 948px;
+  height: 500px;
+  display: block;
+}
+
 h1{
   font-size: calc(0.65rem + 0.8vw);
 }
@@ -82,10 +88,21 @@ h1{
   justify-content: center;
 }
 
+.rightDiv{
+  display: block;
+}
+
 #canvas{
   height: 500px;
   width: auto;
   overflow: hidden;
+}
+
+#canvasBruta{
+  height: 500px;
+  width: auto;
+  overflow: hidden;
+  display: block;
 }
 
 .franja{

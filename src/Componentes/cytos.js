@@ -145,6 +145,10 @@ function animacionArbol(cy) {
       cy.center();
     }
   })
+
+  document.getElementById("canvas").onclick = animation.play;
+  document.getElementById("canvas").onclick = animation.pause;
+  document.getElementById("canvas").onclick = animation.restart;
 }
 
 export default crearAnimacion;

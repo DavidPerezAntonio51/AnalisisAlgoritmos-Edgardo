@@ -4,11 +4,15 @@ import crearFraja from "./Franja";
 import optimaModule from "./optima";
 import main from "./cutRodDP";
 import comparacionSoluciones from "./vs";
+import brutavsdp from "./brutavsDP";
 
 function Sim(contenedor, changeToHome) {
     /*Declaracion de elementos */
     const botonHome = document.createElement('button');
     const botonStart = document.createElement('button');
+    const botonPlay = document.createElement('button');
+    const botonPause = document.createElement('button');
+    const botonRestart = document.createElement('button');
     const fila1 = document.createElement('div');
     const col11 = document.createElement('div');
     const col12 = document.createElement('div');
@@ -25,6 +29,9 @@ function Sim(contenedor, changeToHome) {
     selector.classList.add("form-select", "form-select-lg", "my-2");
     botonHome.classList.add("btn", "btn-bondi");
     botonStart.classList.add("btn", "btn-outline-bondi");
+    botonPlay.classList.add("btn", "btn-outline-bondi");
+    botonPause.classList.add("btn", "btn-outline-bondi");
+    botonRestart.classList.add("btn", "btn-outline-bondi");
     fila1.classList.add("row", "align-items-center");
     col11.classList.add("col-auto");
     col12.classList.add("col-auto");
@@ -34,18 +41,27 @@ function Sim(contenedor, changeToHome) {
     col22.classList.add("col", "py-2");
     /*Extras*/
     selector.id = "sizeOfRod";
+    botonPlay.id = "play";
+    botonPause.id = "pause";
+    botonRestart.id = "restart";
     botonStart.textContent = "Iniciar animación";
     botonStart.disabled = true;
+    botonPlay.textContent = "Reanudar animación";
+    botonPlay.disabled = true;
+    botonPause.textContent = "Pausar animación";
+    botonPause.disabled = true;
+    botonRestart.textContent = "Reiniciar animación";
+    botonRestart.disabled = true;
     bruta.id = "bruta";
     optima.id = "optima";
     comparacion.id = "comparacion";
     botonHome.textContent = "Regresar";
     botonHome.onclick = changeToHome;
-    mountRow2(fila2, col21, col22, botonStart);
+    mountRow2(fila2, col21, col22, botonStart, botonPlay, botonPause, botonRestart);
     optionsMount(selector);
-            brutaModule.brutaCorte(bruta);
-            comparacionSoluciones(comparacion);
-            optimaModule.optimaCanvas(optima);
+    brutaModule.brutaCorte(bruta);
+    comparacionSoluciones(comparacion);
+    optimaModule.optimaCanvas(optima);
     const handlerChangeSelector = (event) => {
         if (event.target.value === "bruta") {
             fila3.replaceChildren(bruta);
@@ -54,8 +70,19 @@ function Sim(contenedor, changeToHome) {
                 crearAnimacion(precios, precios.length);
             }
             botonStart.onclick = handlerStartAnim;
+            botonPlay.disabled = false;
+            botonPause.disabled = false;
+            botonRestart.disabled = false;
         } else if (event.target.value === "vs") {
             fila3.replaceChildren(comparacion);
+            const handlerStartAnim = () => {
+                let precios = getValues();
+                brutavsdp(precios.length, precios);
+            }
+            botonStart.onclick = handlerStartAnim;
+            botonPlay.disabled = false;
+            botonPause.disabled = false;
+            botonRestart.disabled = false;
         } else if (event.target.value === "optima") {
             fila3.replaceChildren(optima);
             const handlerStartAnim = () => {
@@ -63,6 +90,9 @@ function Sim(contenedor, changeToHome) {
                 main(precios.length, precios);
             }
             botonStart.onclick = handlerStartAnim;
+            botonPlay.disabled = false;
+            botonPause.disabled = false;
+            botonRestart.disabled = false;
         }
     }
     selector.onchange = handlerChangeSelector;
@@ -125,7 +155,7 @@ function crearFilaPrecios(size) {
     return filaPrecios;
 }
 
-function mountRow2(fila2, col1, col2, botonStart) {
+function mountRow2(fila2, col1, col2, botonStart, botonPlay, botonPause, botonRestart) {
     const filaAux = document.createElement('div');
     const col1Aux = document.createElement('div');
     const col2Aux = document.createElement('div');
@@ -162,6 +192,9 @@ function mountRow2(fila2, col1, col2, botonStart) {
     col1Aux.appendChild(selectorLabel);
     col1Aux.appendChild(selector);
     col2Aux.appendChild(botonStart);
+    col2Aux.appendChild(botonPlay);
+    col2Aux.appendChild(botonPause);
+    col2Aux.appendChild(botonRestart);
     filaAux.appendChild(col1Aux);
     filaAux.appendChild(col2Aux);
     trPrecio.appendChild(thPrecio);
@@ -207,19 +240,19 @@ function franjaItems(fila1, col11, col12, col13, buttonBack, selector) {
     fila1.appendChild(col13);
 }
 
-function getValues(){
+function getValues() {
     let len = document.getElementById('tamñoElegido').value;
     let precios = [];
 
     let idSinNum = 'price-';
 
-    for (let i = 0; i < len; i++){
+    for (let i = 0; i < len; i++) {
         let id = idSinNum + (i + 1);
         //console.log(id);
         let price = document.getElementById(id);
-        if(price.value !== ''){
+        if (price.value !== '') {
             precios.push(parseInt(price.value, 10));
-        }else{
+        } else {
             price.value = Math.floor(Math.random() * (21 - 1) + 1);
             precios.push(price.value);
         }

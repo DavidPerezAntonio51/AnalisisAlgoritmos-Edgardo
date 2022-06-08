@@ -1,7 +1,7 @@
 import Zdog from 'zdog';
 import Zfont from 'zfont';
 import anime from 'animejs';
-import QuickSand from '../Extras/fonts/AnyConv.com__Quicksand_Bold.ttf';
+import QuickSand from '../Extras/fonts/AnyConv.com__Quicksand_Book.ttf';
 
 let myFont;
 
@@ -10,7 +10,7 @@ function main(n, prices) {
   Zfont.init(Zdog);
 
   myFont = new Zdog.Font({
-    src: 'https://cdn.jsdelivr.net/npm/@expo-google-fonts/quicksand@0.2.2/Quicksand_400Regular.ttf'
+    src: QuickSand,
   });
 
   for (let i = 0; i < n; i++) {
@@ -36,13 +36,6 @@ function cutRod(n, prices) {
     dragRotate: true,
   });
 
-<<<<<<< HEAD
-=======
-  let myFont = new Zdog.Font({
-    src: QuickSand,
-  });
-
->>>>>>> 8de2d7fdad68814fe0233e5ca65c0414487212b6
   let div = new Zdog.Rect({
     addTo: illustration,
     width: 80 * n + 1,
@@ -112,13 +105,13 @@ function cutRod(n, prices) {
       addTo: pricesBoxes[i],
       font: myFont,
       value: prices[i].toString(),
-      fontSize: 28,
+      fontSize: 25,
       textAlign: 'center',
       textBaseline: 'middle',
       color: '#000000',
       fill: true
     });
-    pricesText[i].translate.y = -7;
+    pricesText[i].translate.y = -2;
     pricesText[i].scale = 0;
   }
 
@@ -134,7 +127,7 @@ function cutRod(n, prices) {
     addTo: divop,
     width: 100,
     height: 100,
-    stroke: 10,
+    stroke: 0,
     translate: { x: -200 }
   });
 
@@ -142,7 +135,7 @@ function cutRod(n, prices) {
     addTo: divop,
     width: 100,
     height: 100,
-    stroke: 10,
+    stroke: 0,
     translate: { x: -100 }
   });
 
@@ -150,12 +143,12 @@ function cutRod(n, prices) {
     addTo: op2,
     font: myFont,
     value: '+',
-    fontSize: 56,
+    fontSize: 50,
     textAlign: 'center',
     textBaseline: 'middle',
     color: '#000000',
     fill: true,
-    translate: { y: -15 }
+    translate: { y: -5 }
   });
 
   mas.scale = 0;
@@ -164,19 +157,19 @@ function cutRod(n, prices) {
     addTo: divop,
     width: 100,
     height: 100,
-    stroke: 10,
+    stroke: 0,
   });
 
   let mque = new Zdog.Text({
     addTo: op3,
     font: myFont,
     value: '>',
-    fontSize: 56,
+    fontSize: 50,
     textAlign: 'center',
     textBaseline: 'middle',
     color: '#000000',
     fill: true,
-    translate: { y: -15 }
+    translate: { y: -5 }
   });
 
   mque.scale = 0;
@@ -185,7 +178,7 @@ function cutRod(n, prices) {
     addTo: divop,
     width: 100,
     height: 100,
-    stroke: 10,
+    stroke: 0,
     translate: { x: 100 }
   });
 
@@ -193,12 +186,12 @@ function cutRod(n, prices) {
     addTo: op4,
     font: myFont,
     value: '=',
-    fontSize: 56,
+    fontSize: 50,
     textAlign: 'center',
     textBaseline: 'middle',
     color: '#000000',
     fill: true,
-    translate: { y: -15 }
+    translate: { y: -5 }
   });
 
   igual.scale = 0;
@@ -207,7 +200,7 @@ function cutRod(n, prices) {
     addTo: divop,
     width: 100,
     height: 100,
-    stroke: 10,
+    stroke: 0,
     translate: { x: 200 }
   });
 
@@ -215,12 +208,12 @@ function cutRod(n, prices) {
     addTo: op5,
     font: myFont,
     value: '.',
-    fontSize: 56,
+    fontSize: 50,
     textAlign: 'center',
     textBaseline: 'middle',
     color: '#000000',
     fill: true,
-    translate: { y: -15 }
+    translate: { y: -5 }
   });
 
   valOp5.scale = 0;
@@ -265,7 +258,7 @@ function cutRod(n, prices) {
       fill: true
     });
     valsText[i].scale = 0;
-    valsText[i].translate.y = -9;
+    valsText[i].translate.y = -5;
   }
 
   var valor = 0;
@@ -288,7 +281,7 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = { x: 2, y: -7 };
+  }).translate = { x: 2, y: -4 };
 
   var rectSVA = new Zdog.Rect({
     addTo: illustration,
@@ -309,7 +302,7 @@ function cutRod(n, prices) {
     fill: true
   });
   vaVal.scale = 0;
-  vaVal.translate = { x: -1, y: -8 };
+  vaVal.translate = { x: -1, y: -2 };
 
   var rectI = new Zdog.Rect({
     addTo: illustration,
@@ -329,7 +322,7 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = { x: 2, y: -8 };
+  }).translate = { x: 2, y: -2 };
 
   var rectSI = new Zdog.Rect({
     addTo: illustration,
@@ -351,7 +344,7 @@ function cutRod(n, prices) {
     fill: true
   });
   iVal.scale = 0;
-  iVal.translate = { x: -1, y: -8 };
+  iVal.translate = { x: -1, y: -2 };
 
   var rectJ = new Zdog.Rect({
     addTo: illustration,
@@ -371,7 +364,7 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = { x: 2, y: -8 };
+  }).translate = { x: 2, y: -2 };
 
   var rectSJ = new Zdog.Rect({
     addTo: illustration,
@@ -393,7 +386,7 @@ function cutRod(n, prices) {
     fill: true
   });
   jVal.scale = 0;
-  jVal.translate = { x: -1, y: -8 };
+  jVal.translate = { x: -1, y: -2 };
 
   var rectVM = new Zdog.Rect({
     addTo: illustration,
@@ -413,7 +406,7 @@ function cutRod(n, prices) {
     textBaseline: 'middle',
     color: '#000000',
     fill: true
-  }).translate = { x: 1, y: -7 };
+  }).translate = { x: 1, y: -4 };
 
   var rectSVM = new Zdog.Rect({
     addTo: illustration,
@@ -435,7 +428,7 @@ function cutRod(n, prices) {
     fill: true
   });
   vmVal.scale = 0;
-  vmVal.translate = { x: -1, y: -8 };
+  vmVal.translate = { x: -1, y: -2 };
 
   const timeline1 = anime.timeline({
     duration: 1100,
@@ -491,10 +484,10 @@ function cutRod(n, prices) {
         targets: pricesText[j],
         update: () => {
           op1.addChild(pricesText[j]);
-          pricesText[j].translate = { y: -20 };
+          pricesText[j].translate = { y: -5 };
           illustration.updateRenderGraph();
         },
-        scale: 2.5,
+        scale: 2,
         duration: 1100,
       });
       timeline1.add({
@@ -509,10 +502,10 @@ function cutRod(n, prices) {
         targets: valsText[i - j - 1],
         update: () => {
           op3.addChild(valsText[i - j - 1]);
-          valsText[i - j - 1].translate = { y: -20 };
+          valsText[i - j - 1].translate = { y: -5 };
           illustration.updateRenderGraph();
         },
-        scale: 1.8,
+        scale: 1.3,
         duration: 1100,
       });
       timeline1.add({
@@ -543,11 +536,11 @@ function cutRod(n, prices) {
           igual.scale = 0;
           valsBoxes[i - j - 1].addChild(valsText[i - j - 1]);
           valsText[i - j - 1].scale = 1;
-          valsText[i - j - 1].translate = { y: -9 };
+          valsText[i - j - 1].translate = { y: -5 };
           mas.scale = 0;
           pricesBoxes[j].addChild(pricesText[j]);
           pricesText[j].scale = 1;
-          pricesText[j].translate = { y: -7 };
+          pricesText[j].translate = { y: -2 };
           valOp5.visible = false;
           illustration.updateRenderGraph();
         }
@@ -558,8 +551,8 @@ function cutRod(n, prices) {
           duration: 1100,
           update: () => {
             op2.addChild(vaVal);
-            vaVal.translate = { y: -20 };
-            vaVal.scale = 2;
+            vaVal.translate = { y: -5 };
+            vaVal.scale = 1.5;
             illustration.updateRenderGraph();
           }
         });
@@ -567,8 +560,8 @@ function cutRod(n, prices) {
           duration: 1100,
           update: () => {
             op4.addChild(vmVal);
-            vmVal.translate = { y: -20 };
-            vmVal.scale = 2;
+            vmVal.translate = { y: -5 };
+            vmVal.scale = 1.5;
             illustration.updateRenderGraph();
           }
         });
@@ -583,7 +576,7 @@ function cutRod(n, prices) {
         timeline1.add({
           duration: 1100,
           update: () => {
-            vmVal.value = val[i].toString();
+            vmVal.value = vaVal.value;
             illustration.updateRenderGraph();
           }
         });
@@ -591,11 +584,11 @@ function cutRod(n, prices) {
           duration: 1100,
           update: () => {
             rectSVA.addChild(vaVal);
-            vaVal.translate = { y: -8 };
+            vaVal.translate = { y: -2 };
             vaVal.scale = 1;
             mque.scale = 0;
             rectSVM.addChild(vmVal);
-            vmVal.translate = { y: -8 };
+            vmVal.translate = { y: -2 };
             vmVal.scale = 1;
             illustration.updateRenderGraph();
           }
@@ -605,8 +598,8 @@ function cutRod(n, prices) {
           duration: 1100,
           update: () => {
             op2.addChild(vaVal);
-            vaVal.translate = { y: -20 };
-            vaVal.scale = 2;
+            vaVal.translate = { y: -5 };
+            vaVal.scale = 1.5;
             illustration.updateRenderGraph();
           }
         });
@@ -614,8 +607,8 @@ function cutRod(n, prices) {
           duration: 1100,
           update: () => {
             op4.addChild(vmVal);
-            vmVal.translate = { y: -20 };
-            vmVal.scale = 2;
+            vmVal.translate = { y: -5 };
+            vmVal.scale = 1.5;
             illustration.updateRenderGraph();
           }
         });
@@ -632,11 +625,11 @@ function cutRod(n, prices) {
           duration: 1100,
           update: () => {
             rectSVA.addChild(vaVal);
-            vaVal.translate = { y: -8 };
+            vaVal.translate = { y: -2 };
             vaVal.scale = 1;
             mque.scale = 0;
             rectSVM.addChild(vmVal);
-            vmVal.translate = { y: -8 };
+            vmVal.translate = { y: -2 };
             mque.value = '>';
             vmVal.scale = 1;
             illustration.updateRenderGraph();
@@ -654,15 +647,20 @@ function cutRod(n, prices) {
     val[i] = max_val;
   }
 
-  // for (let i = 0; i <= n; i++) {
-  //   timeline1.add({
-  //     duration: 1100,
-  //     update: () => {
-  //       valsText[i].value = (val[i]).toString(),
-  //         illustration.updateRenderGraph();
-  //     }
-  //   });
-  // }
+  let iteraciones = new Zdog.Text({
+    addTo: illustration,
+    font: myFont,
+    value: cont,
+    fontSize: 20,
+    textAlign: 'center',
+    textBaseline: 'middle',
+    color: '#000000',
+    fill: true,
+    translate: { x: -(width / 2) + 175, y: (height / 2) - 19 }
+  });
+
+  illustration.updateRenderGraph();
+
   return val[n];
 }
 

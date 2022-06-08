@@ -15,10 +15,17 @@ function comparacionSoluciones(nodo) {
     const canvaso = document.createElement('div');
     col1.appendChild(crearFraja("Solución por Fuerza Bruta"));
     col2.appendChild(crearFraja("Solución por DP"));
+    canvasb.height = 500;
+    canvasb.classList.add("rightDiv");
     canvasb.id = "canvasBruta";
-    canvaso.id = "canvasOptima";
+    canvaso.id = "canvas";
     col1.appendChild(canvasb);
     col2.appendChild(canvaso);
+    const canvas = document.createElement('canvas');
+    canvas.width = 948;
+    canvas.height = 500;
+    canvas.id = "canvasOptima"
+    canvaso.appendChild(canvas);
 }
 
 export default comparacionSoluciones;
