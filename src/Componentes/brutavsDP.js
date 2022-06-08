@@ -129,7 +129,7 @@ function corteR(precios, n, padre) {
 }
 
 function animacionArbol(cy) {
-    
+
 }
 
 function cutRod(n, prices, cy) {
@@ -602,6 +602,26 @@ function cutRod(n, prices, cy) {
         loop: false,
     });
 
+    const handlerTwoPlay = () => {
+        animation.play();
+        timeline1.play();
+    }
+
+    const handlerTwoPause = () => {
+        animation.pause();
+        timeline1.pause();
+    }
+
+    const handlerTwoRestart = () => {
+        animation.restart();
+        timeline.restart();
+        timeline1.restart();
+    }
+
+    document.getElementById("play").onclick = handlerTwoPlay;
+    document.getElementById("pause").onclick = handlerTwoPause;
+    document.getElementById("restart").onclick = handlerTwoRestart;
+
     for (let i = 0; i <= n; i++) {
         timeline1.add({
             targets: valsText[i],
@@ -631,7 +651,7 @@ function cutRod(n, prices, cy) {
         textBaseline: 'middle',
         color: '#000000',
         fill: true,
-        translate: { x: -(width / 2) + 80, y: (height / 2)-20 }
+        translate: { x: -(width / 2) + 80, y: (height / 2) - 20 }
     });
 
     // console.log(vaVal, op1);
@@ -846,7 +866,7 @@ function cutRod(n, prices, cy) {
         textBaseline: 'middle',
         color: '#000000',
         fill: true,
-        translate: { x: -(width / 2) + 175, y: (height / 2)-19 }
+        translate: { x: -(width / 2) + 175, y: (height / 2) - 19 }
     });
 
     return val[n];

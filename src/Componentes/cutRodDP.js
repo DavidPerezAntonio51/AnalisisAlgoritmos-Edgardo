@@ -438,6 +438,14 @@ function cutRod(n, prices) {
     loop: false,
   });
 
+    const handlerAnimRestart = () => {
+      timeline.restart();
+      timeline1.restart();
+      console.log(valsText);
+    }
+    document.getElementById("play").onclick = timeline1.play;
+    document.getElementById("pause").onclick = timeline1.pause;
+    document.getElementById("restart").onclick = handlerAnimRestart;
   for (let i = 0; i <= n; i++) {
     timeline1.add({
       targets: valsText[i],
@@ -660,7 +668,6 @@ function cutRod(n, prices) {
   });
 
   illustration.updateRenderGraph();
-
   return val[n];
 }
 

@@ -66,33 +66,42 @@ function Sim(contenedor, changeToHome) {
         if (event.target.value === "bruta") {
             fila3.replaceChildren(bruta);
             const handlerStartAnim = () => {
+                botonPlay.disabled = false;
+                botonPause.disabled = false;
+                botonRestart.disabled = false;
                 let precios = getValues();
                 crearAnimacion(precios, precios.length);
             }
             botonStart.onclick = handlerStartAnim;
-            botonPlay.disabled = false;
-            botonPause.disabled = false;
-            botonRestart.disabled = false;
+            botonPlay.disabled = true;
+            botonPause.disabled = true;
+            botonRestart.disabled = true;
         } else if (event.target.value === "vs") {
             fila3.replaceChildren(comparacion);
             const handlerStartAnim = () => {
+                botonPlay.disabled = false;
+                botonPause.disabled = false;
+                botonRestart.disabled = false;
                 let precios = getValues();
                 brutavsdp(precios.length, precios);
             }
             botonStart.onclick = handlerStartAnim;
-            botonPlay.disabled = false;
-            botonPause.disabled = false;
-            botonRestart.disabled = false;
+            botonPlay.disabled = true;
+            botonPause.disabled = true;
+            botonRestart.disabled = true;
         } else if (event.target.value === "optima") {
             fila3.replaceChildren(optima);
             const handlerStartAnim = () => {
+                botonPlay.disabled = false;
+                botonPause.disabled = false;
+                botonRestart.disabled = false;
                 let precios = getValues();
                 main(precios.length, precios);
             }
             botonStart.onclick = handlerStartAnim;
-            botonPlay.disabled = false;
-            botonPause.disabled = false;
-            botonRestart.disabled = false;
+            botonPlay.disabled = true;
+            botonPause.disabled = true;
+            botonRestart.disabled = true;
         }
     }
     selector.onchange = handlerChangeSelector;
