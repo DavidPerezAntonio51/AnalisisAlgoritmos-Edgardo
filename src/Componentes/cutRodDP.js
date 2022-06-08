@@ -1,6 +1,7 @@
 import Zdog from 'zdog';
 import Zfont from 'zfont';
 import anime from 'animejs';
+import QuickSand from '../Extras/fonts/AnyConv.com__Quicksand_Bold.ttf';
 
 function main(n, prices) {
   for (let i = 0; i < n; i++) {
@@ -27,7 +28,7 @@ function cutRod(n, prices) {
   });
 
   let myFont = new Zdog.Font({
-    src: "https://cdn.jsdelivr.net/gh/jaames/zfont/demo/fredokaone.ttf",
+    src: QuickSand,
   });
 
   let div = new Zdog.Rect({
