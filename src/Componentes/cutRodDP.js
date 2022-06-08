@@ -1,6 +1,7 @@
 import Zdog from 'zdog';
 import Zfont from 'zfont';
 import anime from 'animejs';
+import QuickSand from '../Extras/fonts/AnyConv.com__Quicksand_Bold.ttf';
 
 let myFont;
 
@@ -35,6 +36,13 @@ function cutRod(n, prices) {
     dragRotate: true,
   });
 
+<<<<<<< HEAD
+=======
+  let myFont = new Zdog.Font({
+    src: QuickSand,
+  });
+
+>>>>>>> 8de2d7fdad68814fe0233e5ca65c0414487212b6
   let div = new Zdog.Rect({
     addTo: illustration,
     width: 80 * n + 1,
