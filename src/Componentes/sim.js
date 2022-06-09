@@ -104,33 +104,62 @@ function Sim(contenedor, changeToHome) {
                 botonPlay.disabled = false;
                 botonPause.disabled = false;
                 botonRestart.disabled = false;
+                botonReset.disabled = false;
+                botonStart.disabled = true;
                 let precios = getValues();
                 brutavsdp(precios.length, precios);
             }
+            const handlerResetAnim = () => {
+                let newVs = document.createElement('div');
+                newVs.id = 'comparacion';
+                comparacionSoluciones(newVs);
+                fila3.replaceChildren(newVs);
+                botonStart.onclick = handlerStartAnim;
+                botonReset.disabled = true;
+                botonPlay.disabled = true;
+                botonPause.disabled = true;
+                botonRestart.disabled = true;
+                botonStart.disabled = false;
+                clearValues();
+            };
             botonStart.onclick = handlerStartAnim;
+            botonReset.disabled = true;
             botonPlay.disabled = true;
             botonPause.disabled = true;
             botonRestart.disabled = true;
+            botonReset.onclick = handlerResetAnim;
         } else if (event.target.value === "optima") {
             fila3.replaceChildren(optima);
             const handlerStartAnim = () => {
                 botonPlay.disabled = false;
                 botonPause.disabled = false;
                 botonRestart.disabled = false;
+                botonReset.disabled = false;
+                botonStart.disabled = true;
                 let precios = getValues();
                 main(precios.length, precios);
             };
 
             const handlerResetAnim = () => {
-                location.reload();
+                let newOptima = document.createElement('div');
+                newOptima.id = 'optima';
+                optimaModule.optimaCanvas(newOptima);
+                fila3.replaceChildren(newOptima);
+                botonStart.onclick = handlerStartAnim;
+                botonReset.disabled = true;
+                botonPlay.disabled = true;
+                botonPause.disabled = true;
+                botonRestart.disabled = true;
+                botonStart.disabled = false;
+                clearValues();
             };
 
-            botonReset.disabled = false;
             botonReset.onclick = handlerResetAnim;
-            botonStart.onclick = handlerStartAnim;
+            botonReset.disabled = true;
             botonPlay.disabled = true;
             botonPause.disabled = true;
             botonRestart.disabled = true;
+            botonStart.onclick = handlerStartAnim;
         }
     }
     selector.onchange = handlerChangeSelector;

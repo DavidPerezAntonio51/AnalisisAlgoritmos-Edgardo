@@ -12,7 +12,8 @@ var pila = [];
 var valsMax = [];
 
 function brutavsdp(n, prices) {
-
+    pila = [];
+    valsMax = [];
     console.log("hola");
     arbol = new Tree();
     corteR(prices, n, null);
