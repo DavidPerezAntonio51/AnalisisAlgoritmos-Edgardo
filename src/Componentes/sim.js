@@ -59,7 +59,7 @@ function Sim(contenedor, changeToHome) {
     optima.id = "optima";
     comparacion.id = "comparacion";
     botonHome.textContent = "Regresar";
-    botonReset.textContent = "Resetear animación"
+    botonReset.textContent = "Limpiar animación"
     botonHome.onclick = changeToHome;
     mountRow2(fila2, col21, col22, botonStart, botonPlay, botonPause, botonRestart);
     optionsMount(selector);
@@ -73,21 +73,31 @@ function Sim(contenedor, changeToHome) {
                 botonPlay.disabled = false;
                 botonPause.disabled = false;
                 botonRestart.disabled = false;
+                botonReset.disabled = false;
+                botonStart.disabled = true;
                 let precios = getValues();
                 crearAnimacion(precios, precios.length);
             }
 
             const handlerResetAnim = () => {
-                var canvas = document.getElementById('canvas');
-                ctx = canvas.getContext("2d");
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let newBruta = document.createElement('div');
+                newBruta.id = 'bruta';
+                brutaModule.brutaCorte(newBruta);
+                fila3.replaceChildren(newBruta);
+                botonStart.onclick = handlerStartAnim;
+                botonReset.disabled = true;
+                botonPlay.disabled = true;
+                botonPause.disabled = true;
+                botonRestart.disabled = true;
+                botonStart.disabled = false;
+                clearValues();
             }
             botonStart.onclick = handlerStartAnim;
-            botonReset.disabled = false;
-            botonReset.onclick = handlerResetAnim;
+            botonReset.disabled = true;
             botonPlay.disabled = true;
             botonPause.disabled = true;
             botonRestart.disabled = true;
+            botonReset.onclick = handlerResetAnim;
         } else if (event.target.value === "vs") {
             fila3.replaceChildren(comparacion);
             const handlerStartAnim = () => {
@@ -291,6 +301,20 @@ function franjaItems(fila1, col11, col12, col13, buttonBack, botonReset, selecto
     fila1.appendChild(col11);
     fila1.appendChild(col12);
     fila1.appendChild(col13);
+}
+
+function clearValues(){
+    let len = document.getElementById('tamñoElegido').value;
+    let precios = [];
+
+    let idSinNum = 'price-';
+
+    for (let i = 0; i < len; i++) {
+        let id = idSinNum + (i + 1);
+        //console.log(id);
+        let price = document.getElementById(id);
+        price.value = '';
+    }
 }
 
 function getValues() {

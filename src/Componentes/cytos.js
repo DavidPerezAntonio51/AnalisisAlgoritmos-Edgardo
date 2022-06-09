@@ -9,11 +9,14 @@ var pila = [];
 var valsMax = [];
 
 function crearAnimacion(tprecios, longitud) {
+  pila = [];
+  valsMax = [];
   var selector = document.getElementById('tamñoElegido').value;
   arbol = new Tree();
   corteR(tprecios, longitud, null);
   let nodes = [];
   let edges = [];
+  console.log(valsMax)
   pila.forEach(nodo =>
     nodes.push({ data: { id: nodo.id.toString(), value: nodo.value.toString() }, position: { x: 0, y: 0 } })
   );
