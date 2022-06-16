@@ -46,6 +46,7 @@ function Sim(contenedor, changeToHome) {
     botonPlay.id = "play";
     botonPause.id = "pause";
     botonRestart.id = "restart";
+    botonReset.id = "reset";
     botonStart.textContent = "Iniciar animación";
     botonStart.disabled = true;
     botonPlay.textContent = "Reanudar animación";

@@ -454,10 +454,10 @@ function cutRod(n, prices) {
     igual.scale = 0;
     rectSVM.addChild(vmVal);
     vmVal.scale = 1;
-    vmVal.translate = {y: -2};
+    vmVal.translate = { y: -2 };
     rectSVA.addChild(vaVal);
     vaVal.scale = 1;
-    vaVal.translate = {y: -2};
+    vaVal.translate = { y: -2 };
     valOp5.scale = 0;
 
     timeline.restart();
@@ -466,6 +466,7 @@ function cutRod(n, prices) {
   }
   document.getElementById("play").onclick = timeline1.play;
   document.getElementById("pause").onclick = timeline1.pause;
+  // document.getElementById("reset").onclick = timeline1.pause;
   document.getElementById("restart").onclick = handlerAnimRestart;
   for (let i = 0; i <= n; i++) {
     timeline1.add({

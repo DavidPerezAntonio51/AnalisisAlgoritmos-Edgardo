@@ -165,6 +165,7 @@ function animacionArbol(cy) {
 
   document.getElementById("play").onclick = animation.play;
   document.getElementById("pause").onclick = animation.pause;
+  // document.getElementById("reset").onclick = animation.pause;
   document.getElementById("restart").onclick = handlerAnimRestart;
 }
 
