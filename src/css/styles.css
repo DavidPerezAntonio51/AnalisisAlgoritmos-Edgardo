@@ -40,6 +40,12 @@ body{
   font-size: 80%;
 }
 
+#cy {
+  width: 948px;
+  height: 500px;
+  display: block;
+}
+
 h1{
   font-size: calc(0.65rem + 0.8vw);
 }
@@ -76,6 +82,29 @@ h1{
   font-weight: 700;
 }
 
+.centerDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightDiv{
+  display: block;
+}
+
+#canvas{
+  height: 500px;
+  width: auto;
+  overflow: hidden;
+}
+
+#canvasBruta{
+  height: 500px;
+  width: auto;
+  overflow: hidden;
+  display: block;
+}
+
 .franja{
   background: var(--theme-color-stratos)
 }
@@ -90,8 +119,25 @@ h1{
   border-color: var(--theme-color-bondi-blue);
 }
 
+.btn-bondi{
+  color: var(--theme-color-boticelli);
+  border-color: var(--theme-color-bondi-blue);
+  background-color: var(--theme-color-bondi-blue);
+}
+
+.btn-bondi:hover{
+  background-color: var(--theme-color-regal-blue);
+  border-color: var(--theme-color-regal-blue);
+  color: var(--theme-color-boticelli);
+}
+
+.table-morning-glory{
+  background-color: var(--theme-color-morning-glory)
+}
+
 .btn-outline-bondi:hover{
   background-color: var(--theme-color-bondi-blue);
+  color: var(--theme-color-boticelli);
 }
 
 .gradiente{
