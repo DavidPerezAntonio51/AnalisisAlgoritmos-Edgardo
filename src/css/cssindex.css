@@ -1,0 +1,105 @@
+:root
+{
+    --stratos: #001b48;
+    --regalblue: #02457A;
+    --bondiblue: #018ABE;
+    --morningglory: #97CADB;
+    --batticeli: #D6E8EE;
+    --grisblanco:rgb(198, 193, 193);
+    --blanco:#FFFF;
+
+
+}
+
+/* FUENTES*/
+@font-face {
+    font-family: Quicksand;
+    src: url('../css/Quicksand_Dash.otf'),url('../css/Quicksand_Light.otf'),url('../css/Quicksand_Book.otf'),url('../css/Quicksand_Bold.otf');
+}
+/*GENERALES*/
+.derecha
+ {
+     text-align: right;
+ }
+.center
+{
+    text-align: center;
+}
+.izquierda
+{
+    text-align: left;
+}
+
+/* Globales*/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /* Hack para Box Model **/
+    
+}
+
+
+body {
+    font-size: 16px; /* 1rem = 10px */
+    font-family: 'Quicksand', sans-serif;
+    
+    
+}
+
+/*Clases*/
+
+
+/*HEADER*/
+.header
+{
+    background-image: linear-gradient(to top, var(--morningglory) 0%, var(--bondiblue) 100% );
+    
+}
+.header__texto {
+    text-align: justify;
+ }
+ .logoescom
+ {
+    justify-content: left;
+    width: 10rem;
+    height: 10rem;
+ }
+
+ .logoipn
+ {
+     justify-content: center;
+     width: 10rem;
+     height: 10rem;
+ }
+
+ /*HEADER*/
+
+.FondoTitulo
+{
+    background-color: #001b48;
+    color: var(--blanco);
+    margin-top: 2.5rem;
+    height: 5rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
+}
+
+.defproblem
+{
+    text-align: justify;
+    font-size: 2.3rem;
+}
+
+.boton {
+    background-color: var(--bondiblue);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
